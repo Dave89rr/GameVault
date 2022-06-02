@@ -1,4 +1,4 @@
 # GameVault
 
-## Database-Schema_v1.3
-![gamevault-database](https://user-images.githubusercontent.com/96565654/171316532-6ea98e7a-b0cc-4b2d-9fd1-5b2ebeb91097.jpg)
+## Database-Schema_v1.4
+<img width="1667" alt="GameVault Databasev1 4" src="https://user-images.githubusercontent.com/6596778/171747634-393071a6-73f1-45d3-bfb8-1ba3adf60c70.png">
