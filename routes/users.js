@@ -133,7 +133,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
       );
 
       if (passwordMatch) {
-        loginUser(req, res, next);
+        loginUser(req, res, user);
         return res.redirect('/')
       }
     }
