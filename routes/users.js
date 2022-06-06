@@ -98,4 +98,11 @@ router.post(
   })
 );
 
+router.get('/login', csrfProtection, (req, res) => {
+  res.render('login', {
+    title: 'Login',
+    csrfToken: req.csrfToken(),
+  });
+});
+
 module.exports = router;
