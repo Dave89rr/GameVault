@@ -4,12 +4,14 @@ block content
     form(action="/users/sign-up" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="username") User Name
-        input(type="text" id="username" name="username" value=user.username) 
-        label(for="email") Email 
+        input(type="text" id="username" name="username" value=user.username)
+        label(for='bio') Bio
+        textarea(name='bio' id='bio' value=user.bio)
+        label(for="email") Email
         input(type="email" id="email" name="email" value=user.email)
         label(for="password") Password
-        input(type="text" id="password" name="password" value=user.password)
-        label(for="confirm-password") Confirm Password 
+        input(type="text" id="password" name="password")
+        label(for="confirm-password") Confirm Password
         input(type="text" id="confirm-password" name="confirmPassword")
         button(type="submit") Register
         a(href="/users/login") Sign in Here
