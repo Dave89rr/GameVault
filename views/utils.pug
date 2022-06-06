@@ -1,0 +1,6 @@
+mixin errors(errors)
+  if errors
+    p The following error(s) were found in the form
+    ul
+      each error in errors
+        li= error
