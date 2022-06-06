@@ -1,0 +1,14 @@
+extends layout.pug 
+include utils.pug
+
+block content
+  +errors(errors)
+  form(action='/users/log-in' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    label(for='username') Username 
+    input(type='text' id='username' name='username')
+    label(for='password') Password 
+    input(type='password' id='password' name='password')
+    button(type="submit") Log In
+  a(href='/users/sign-up') Create account
+
