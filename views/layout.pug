@@ -2,16 +2,28 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="GameVault"
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     nav
-      if locals.authenticated
-        span Welcome #{user.username}!
-        form(action='/users/logout' method='post')
-          button(type='submit') Logout
-      else
-        span
-          a(href='/users/login') Login
-          a(href='/users/sign-up') Sign Up
+      div(id='logo')
+        img(src='../media/logo.png' id='logo-img')
+      div(id='login-signup')
+        if locals.authenticated
+          span Welcome #{user.username}!
+          form(action='/users/logout' method='post')
+            button(type='submit') Logout
+        else
+          span
+            a(href='/users/login') Login
+            a(href='/users/sign-up') Sign Up
     block content
+    footer created by
+        span
+          a(href="https://github.com/Dave89rr/GameVault") Dave
+        span
+          a(href="https://github.com/jiaqicheng1998") Jiaqi
+        span
+          a(href="https://github.com/anailopez") Amy
+        span
+          a(href="https://github.com/angMaidt") Angie

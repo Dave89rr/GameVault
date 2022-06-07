@@ -1,20 +1,32 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 * {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header {
   font-size: 1rem;
-  color: inherit;
+  color: black;
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -24,4 +36,39 @@ body, header, nav {
 
 h1 {
   font-size: 2rem;
+}
+
+#logo-img {
+  height: 50px;
+  width: auto;
+}
+
+nav {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4a39d3;
+  /* color: white; */
+}
+
+#login-signup span {
+  color: white;
+}
+
+footer {
+  position: absolute;
+  top: 95%;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #F09AFF;
+  color: white
+}
+
+footer span a {
+  color: white
 }

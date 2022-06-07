@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const { asyncHandler } = require('./utils');
+
+const db = require('../db/models');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
-});
+router.get('/', asyncHandler(async (req, res, next) => {
+  const games = await db.Game.findAll();
+  res.render('home', { title: 'GameVault', games });
+}));
 
 module.exports = router;
