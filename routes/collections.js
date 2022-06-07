@@ -6,17 +6,20 @@ const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
-router.get('/', requireAuth, asyncHandler(async(req, res) => {
-  const userId = res.locals.user.id;
-  const collection = await db.Collection.findAll({
-    where: {
-      user_id: userId
-    }
+router.get(
+  '/',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = res.locals.user.id;
+    const collections = await db.Collection.findAll({
+      include: 'Games',
+      where: {
+        user_id: userId,
+      },
+    });
+    res.render('vault-view', { collections });
   })
-  console.log(collection);
-
-  res.render('vault-view', { collection })
-}))
+);
 
 router.get(
   '/new',
@@ -88,6 +91,5 @@ router.get(
     });
   })
 );
-
 
 module.exports = router;

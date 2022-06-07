@@ -8,11 +8,11 @@ block content
     div(id='entries')
         div(id='collections')
             h3 Collections
-            each collection in entries.Collections
+            each collection in collections
                 h4= collection.name
                 p= collection.description
                 div(id='games')
-                    each game in entries.Games
+                    each game in collection.Games
                         img(src=game.img_url)
     input(type='button' value='Add a New Collection')
 
