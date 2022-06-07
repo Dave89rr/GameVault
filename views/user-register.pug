@@ -1,18 +1,20 @@
 extends layout.pug
 include utils.pug
 block content
+    link(rel='stylesheet' href="/stylesheets/form.css")
     +errors(errors)
-    form(action="/users/sign-up" method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="username") User Name
-        input(type="text" id="username" name="username" value=user.username)
-        label(for='bio') Bio
-        textarea(name='bio' id='bio') #{user.bio}
-        label(for="email") Email
-        input(type="email" id="email" name="email" value=user.email)
-        label(for="password") Password
-        input(type="password" id="password" name="password")
-        label(for="confirm-password") Confirm Password
-        input(type="password" id="confirm-password" name="confirmPassword")
-        button(type="submit") Register
-        a(href="/users/login") Sign in Here
+    div(class='some-form')
+        form(action="/users/sign-up" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="username") User Name
+            input(type="text" id="username" name="username" value=user.username)
+            label(for='bio') Bio
+            textarea(name='bio' id='bio') #{user.bio}
+            label(for="email") Email
+            input(type="email" id="email" name="email" value=user.email)
+            label(for="password") Password
+            input(type="password" id="password" name="password")
+            label(for="confirm-password") Confirm Password
+            input(type="password" id="confirm-password" name="confirmPassword")
+            button(type="submit") Register
+            a(href="/users/login") Sign in Here

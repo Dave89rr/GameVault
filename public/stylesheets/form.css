@@ -1,0 +1,18 @@
+.some-form {
+    /* border: 1px solid black; */
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    height: 350px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
