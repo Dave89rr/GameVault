@@ -6,6 +6,18 @@ const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
+router.get('/', requireAuth, asyncHandler(async(req, res) => {
+  const userId = res.locals.user.id;
+  const collection = await db.Collection.findAll({
+    where: {
+      user_id: userId
+    }
+  })
+  console.log(collection);
+
+  res.render('vault-view', { collection })
+}))
+
 router.get(
   '/new',
   csrfProtection,
@@ -76,4 +88,6 @@ router.get(
     });
   })
 );
+
+
 module.exports = router;
