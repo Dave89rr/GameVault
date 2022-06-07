@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   PlayedStatus.associate = function (models) {
     // associations can be defined here
+    PlayedStatus.belongsTo( models.Entry, { foreignKey: 'played_status_id' });
   };
   return PlayedStatus;
 };
