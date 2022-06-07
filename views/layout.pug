@@ -6,12 +6,15 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     nav
-      if locals.authenticated
-        span Welcome #{user.username}!
-        form(action='/users/logout' method='post')
-          button(type='submit') Logout
-      else
-        span
-          a(href='/users/login') Login
-          a(href='/users/sign-up') Sign Up
+      div(id='logo')
+        img(src='../media/logo.png' id='logo-img')
+      div(id='login-signup')
+        if locals.authenticated
+          span Welcome #{user.username}!
+          form(action='/users/logout' method='post')
+            button(type='submit') Logout
+        else
+          span
+            a(href='/users/login') Login
+            a(href='/users/sign-up') Sign Up
     block content
