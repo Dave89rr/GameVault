@@ -1,10 +1,10 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 * {
@@ -24,10 +24,9 @@ ul,
 div,
 span,
 body,
-header,
-nav {
+header {
   font-size: 1rem;
-  color: white;
+  color: black;
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -41,7 +40,7 @@ h1 {
 
 #logo-img {
   height: 50px;
-  width: auto
+  width: auto;
 }
 
 nav {
@@ -49,5 +48,6 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #4A39D3;
+  background-color: #4a39d3;
+  color: white;
 }

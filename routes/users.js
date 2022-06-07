@@ -87,7 +87,7 @@ router.post(
       user.password = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect('/');
+      res.redirect('/collections/new');
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render('user-register', {
@@ -108,52 +108,55 @@ router.get('/login', csrfProtection, (req, res) => {
 });
 
 const loginValidators = [
-  check("username")
+  check('username')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for username"),
-  check("password")
+    .withMessage('Please provide a value for username'),
+  check('password')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for Password"),
+    .withMessage('Please provide a value for Password'),
 ];
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, res) => {
-  const { username, password } = req.body
+router.post(
+  '/login',
+  csrfProtection,
+  loginValidators,
+  asyncHandler(async (req, res) => {
+    const { username, password } = req.body;
 
+    let errors = [];
+    const validatorErrors = validationResult(req);
 
-  let errors = []
-  const validatorErrors = validationResult(req)
+    if (validatorErrors.isEmpty()) {
+      const user = await db.User.findOne({ where: { username } });
 
-  if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({ where: { username}})
+      if (user) {
+        const passwordMatch = await bcrypt.compare(
+          password,
+          user.password.toString()
+        );
 
-    if (user) {
-      const passwordMatch = await bcrypt.compare(
-        password,
-        user.password.toString()
-      );
-
-      if (passwordMatch) {
-        loginUser(req, res, user);
-        return res.redirect('/')
+        if (passwordMatch) {
+          loginUser(req, res, user);
+          return res.redirect('/');
+        }
       }
+
+      errors.push('Login failed for the provided username and password');
+    } else {
+      errors = validatorErrors.array().map((error) => error.msg);
     }
 
-    errors.push("Login failed for the provided username and password")
-  } else {
-    errors = validatorErrors.array().map((error) => error.msg)
-  }
-
-  res.render('login', {
-    title: 'Login',
-    errors,
-    csrfToken: req.csrfToken(),
+    res.render('login', {
+      title: 'Login',
+      errors,
+      csrfToken: req.csrfToken(),
+    });
   })
-
-}))
+);
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/users/login')
-})
+  res.redirect('/users/login');
+});
 
 module.exports = router;
