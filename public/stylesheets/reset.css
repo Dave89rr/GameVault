@@ -11,10 +11,23 @@ a {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
   font-size: 1rem;
-  color: inherit;
+  color: white;
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -24,4 +37,17 @@ body, header, nav {
 
 h1 {
   font-size: 2rem;
+}
+
+#logo-img {
+  height: 50px;
+  width: auto
+}
+
+nav {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4A39D3;
 }
