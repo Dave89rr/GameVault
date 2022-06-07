@@ -2,12 +2,14 @@ const express = require('express');
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
+const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
 router.get(
   '/new',
   csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const collection = await db.Collection.build();
     res.render('collections-new', {
@@ -33,6 +35,7 @@ const collectionValidator = [
 router.post(
   '/new',
   csrfProtection,
+  requireAuth,
   collectionValidator,
   asyncHandler(async (req, res) => {
     const { name, description } = req.body;
@@ -61,4 +64,16 @@ router.post(
   })
 );
 
+router.get(
+  '/:id(\\d+)',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const collection = await db.Collection.findByPk(
+      parseInt(req.params.id, 10)
+    );
+    res.render('collection', {
+      collection,
+    });
+  })
+);
 module.exports = router;
