@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+    div
+        h1= collection.name
+        h2= collection.description
+    div
+        each game in games
+            div
+                img(src=`${game.img_url}`)
