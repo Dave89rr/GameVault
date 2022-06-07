@@ -1,11 +1,12 @@
-extends layout 
+extends layout
 
-block content 
-
+block content
+    link(rel="stylesheet", href="/stylesheets/homepage.css")
     div(id="banner")
     div(id="game-display")
         h1 What's New?
-        div
-            each game in games
-                div 
-                    img(src=game.img_url)
+        if games
+            div(class='img-box')
+                each game in games
+                    div(class='home-img' style=`background-image: url(${game.img_url});`)
+                        //- img(src=game.img_url)
