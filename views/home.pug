@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+
+    div(id="banner")
+    div(id="game-display")
+        h1 What's New?
+        div
+            each game in games
+                div 
+                    img(src=game.img_url)
