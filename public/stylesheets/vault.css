@@ -1,0 +1,6 @@
+#games {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 1500px;
+}
