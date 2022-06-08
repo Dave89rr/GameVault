@@ -4,3 +4,15 @@ mixin errors(errors)
     ul
       each error in errors
         li= error
+
+mixin gameCard(game)
+  div(class='card')
+    .game-title
+      p= game.name
+    div(class='home-img' style=`background-image: url(${game.img_url});`)
+
+mixin vaultCard(game)
+  div(class='card')
+    .game-title
+      p= game.name
+    div(class='home-img' style=`background-image: url(${game.img_url});`)
