@@ -10,9 +10,22 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center;
+    margin-left: 5%;
+    margin-right: 5%; */
+    margin: auto;
+    width: 1500px;
 }
 
 .card {
     margin: 50px;
+    max-width: 200px;
+}
+
+.card p {
+    text-align: center;
+}
+
+.game-title {
+    height: 40px;
 }

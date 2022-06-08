@@ -1,4 +1,5 @@
 extends layout
+include utils.pug
 
 block content
     link(rel="stylesheet" href="/stylesheets/homepage.css")
@@ -8,6 +9,4 @@ block content
         if games
             div(class='img-box')
                 each game in games
-                    div(class='card')
-                        p= game.name
-                        div(class='home-img' style=`background-image: url(${game.img_url});`)
+                    +gameCard(game)
