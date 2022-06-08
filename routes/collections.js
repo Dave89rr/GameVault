@@ -101,6 +101,25 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
   res.render('collection', { collection });
 }));
 
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const collectionId = parseInt(req.params.id, 10);
+  const entries = await db.Entry.findAll({ where: { collection_id: collectionId } });
+  if (entries.length != 0) {
+    res.send('need to delete all games') //send a warning to the user
+  } else {
+    await db.Collection.destroy({ where: { id: collectionId } });
+    res.send('it is deleted');
+    // const userId = res.locals.user.id;
+    // const collections = await db.Collection.findAll({
+    //   include: 'Games',
+    //   where: {
+    //     user_id: userId,
+    //   },
+    // });
+    // res.render('vault-view', { collections });
+  }
+}));
+
 
 
 module.exports = router;

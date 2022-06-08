@@ -21,5 +21,10 @@ router.post('/', /*requireAuth*/ asyncHandler(async (req, res) => {
     res.render('collection', { collection });
 }));
 
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const entryId = parseInt(req.params.id,10);
+    await db.Entry.destroy({where: {id: entryId}});
+    res.send('it is deleted')
+}))
 
 module.exports = router;
