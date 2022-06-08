@@ -80,7 +80,7 @@ router.post(
   })
 );
 
-router.get(
+router.get( //won't render
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
