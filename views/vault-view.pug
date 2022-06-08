@@ -1,5 +1,5 @@
 extends layout.pug
-include utils.pug 
+include utils.pug
 
 block content
     link(rel="stylesheet" href="/stylesheets/main.css")
@@ -17,7 +17,5 @@ block content
                 div(id='games')
                     each game in collection.Games
                       +gameCard(game)
-
-    input(type='button' value='Add a New Collection')
-
-    footer
+    a(href='/collections/new')
+      button(type='button' id='new-collection') Add a new collection!
