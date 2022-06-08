@@ -80,15 +80,17 @@ router.post(
   })
 );
 
-router.get(
+router.get( //won't render
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
     const collection = await db.Collection.findByPk(
       parseInt(req.params.id, 10)
     );
+    console.log(collection)
     res.render('collection', {
-      collection,
+      title: 'collection page',
+      collection: collection,
     });
   })
 );

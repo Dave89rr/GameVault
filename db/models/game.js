@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Game.belongsToMany( models.Collection, { through: 'Entry', foreignKey: 'game_id', otherKey: 'collection_id' });
     Game.hasMany( models.Entry, { foreignKey: 'game_id' });
+    Game.hasMany( models.Review,  { foreignKey: 'game_id' })
   };
   return Game;
 };
