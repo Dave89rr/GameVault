@@ -87,8 +87,10 @@ router.get(
     const collection = await db.Collection.findByPk(
       parseInt(req.params.id, 10)
     );
+    console.log(collection)
     res.render('collection', {
-      collection,
+      title: 'collection page',
+      collection: collection,
     });
   })
 );
