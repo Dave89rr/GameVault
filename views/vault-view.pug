@@ -3,7 +3,7 @@ extends layout.pug
 block content
     div(id='user-info')
         img
-        h1 #{user.username}
+        h1=user.username
         h2 Bio: #{user.bio}
     div(id='entries')
         div(id='collections')
@@ -13,7 +13,7 @@ block content
                 p= collection.description
                 div(id='games')
                     each game in entries.Games
-                        img(src=`${game.img_url}`)
+                        img(src=game.img_url)
     input(type='button' value='Add a New Collection')
 
     footer
