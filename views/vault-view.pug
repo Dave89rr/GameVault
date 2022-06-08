@@ -1,10 +1,15 @@
 extends layout.pug
+include utils.pug
 
 block content
+    link(rel="stylesheet" href="/stylesheets/main.css")
+    link(rel="stylesheet" href="/stylesheets/vault.css")
     div(id='user-info')
         img
         h1=user.username
         h2 Bio: #{user.bio}
+        a(href=`/users/${user.id}/edit`)
+          button(type='button'id='editProfile') Edit
     div(id='entries')
         div(id='collections')
             h3 Collections
@@ -13,7 +18,6 @@ block content
                 p= collection.description
                 div(id='games')
                     each game in collection.Games
-                        img(src=game.img_url)
-    input(type='button' value='Add a New Collection')
-
-    footer
+                      +gameCard(game)
+    a(href='/collections/new')
+      button(type='button' id='new-collection') Add a new collection!

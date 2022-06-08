@@ -1,0 +1,124 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.home-img {
+  height: 300px;
+  width: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.img-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: center;
+    margin-left: 5%;
+    margin-right: 5%; */
+  margin: auto;
+  width: 1500px;
+  padding-bottom: 50px;
+}
+
+.card {
+  margin: 50px;
+  max-width: 200px;
+}
+
+.card p {
+  text-align: center;
+}
+
+.game-title {
+  height: 40px;
+}
+
+body {
+  padding: 50px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header {
+  font-size: 1rem;
+  color: black;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+#logo-img {
+  height: 50px;
+  width: auto;
+}
+
+nav {
+  /* border: 1px solid black; */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4a39d3;
+  /* color: white; */
+}
+
+#login-signup span {
+  color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f09aff;
+  color: white;
+}
+
+footer span a {
+  color: white;
+}
+
+#banner {
+  top: 54px;
+  min-width: 100%;
+  height: 600px;
+  background-image: url('../media/banner.png');
+  background-size: cover;
+}

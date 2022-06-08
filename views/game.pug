@@ -1,0 +1,17 @@
+extends layout.pug 
+
+block content
+  h1= game.name
+  h2= game.publisher 
+  h2= game.synopsis
+  div 
+    img(src=game.img_url)
+  button(type="submit") Add to Vault
+  if reviews
+    ul 
+      each review in reviews
+        p=review.content 
+        p=review.stars
+  form(action=`/games/${game.id}/reviews` method="post")
+    textarea(name="content" id="content" required) 
+    button(type="submit") Add review

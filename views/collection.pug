@@ -1,11 +1,24 @@
 extends layout.pug
+include utils.pug
+
 
 block content
+    link(rel="stylesheet" href="/stylesheets/main.css")
     div
         h1= collection.name
         h2= collection.description
-    div
-        if games
-            each game in games
-                div
-                    img(src=game.img_url)
+    button(type='button' id='editCollection') Edit
+    div(class='img-box')
+        if collection.Games
+            each game in collection.Games
+              +gameCard(game)
+    div(id='addGamesSelect')
+      form(action='' method='get')
+        select(name='game_id' id='selectValue')
+          option(value='1') Game1
+          option(value='2') Game2
+          option(value='3') Game3
+        input(type='button' id='addGameToColl' value='add game')
+        //- each game in allGames
+          option(value=game.game_id)= game.name
+    script(src='/javascripts/index.js')

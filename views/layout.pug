@@ -3,14 +3,16 @@ html
   head
       block head
         title="GameVault"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/main.css')
   body
     nav
       div(id='logo')
-        img(src='../media/logo.png' id='logo-img')
+        a(href='/')
+          img(src='../media/logo.png' id='logo-img')
       div(id='login-signup')
         if locals.authenticated
-          span Welcome #{user.username}!
+          span Welcome 
+            a(href='/collections') #{user.username}!
           form(action='/users/logout' method='post')
             button(type='submit') Logout
         else
