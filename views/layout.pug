@@ -11,7 +11,8 @@ html
           img(src='../media/logo.png' id='logo-img')
       div(id='login-signup')
         if locals.authenticated
-          span Welcome #{user.username}!
+          span Welcome 
+            a(href='/collections') #{user.username}!
           form(action='/users/logout' method='post')
             button(type='submit') Logout
         else

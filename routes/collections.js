@@ -84,10 +84,13 @@ router.get( //won't render
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const collection = await db.Collection.findByPk(
-      parseInt(req.params.id, 10)
-    );
-    console.log(collection)
+    const collection = await db.Collection.findOne({
+      include: 'Games',
+      where: {
+        id: parseInt(req.params.id, 10),
+      },
+    });
+    console.log(collection.Games);
     res.render('collection', {
       title: 'collection page',
       collection: collection,
@@ -95,33 +98,39 @@ router.get( //won't render
   })
 );
 
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const collectionId = parseInt(req.params.id, 10);
-  const collection = await db.Collection.findByPk(collectionId);
-  const { name, description } = req.body;
-  await collection.update({ name, description });
-  res.render('collection', { collection });
-}));
+router.put(
+  '/:id(\\d+)',
+  asyncHandler(async (req, res) => {
+    const collectionId = parseInt(req.params.id, 10);
+    const collection = await db.Collection.findByPk(collectionId);
+    const { name, description } = req.body;
+    await collection.update({ name, description });
+    res.render('collection', { collection });
+  })
+);
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const collectionId = parseInt(req.params.id, 10);
-  const entries = await db.Entry.findAll({ where: { collection_id: collectionId } });
-  if (entries.length != 0) {
-    res.send('need to delete all games') //send a warning to the user
-  } else {
-    await db.Collection.destroy({ where: { id: collectionId } });
-    res.send('it is deleted');
-    // const userId = res.locals.user.id;
-    // const collections = await db.Collection.findAll({
-    //   include: 'Games',
-    //   where: {
-    //     user_id: userId,
-    //   },
-    // });
-    // res.render('vault-view', { collections });
-  }
-}));
-
-
+router.delete(
+  '/:id(\\d+)',
+  asyncHandler(async (req, res) => {
+    const collectionId = parseInt(req.params.id, 10);
+    const entries = await db.Entry.findAll({
+      where: { collection_id: collectionId },
+    });
+    if (entries.length != 0) {
+      res.send('need to delete all games'); //send a warning to the user
+    } else {
+      await db.Collection.destroy({ where: { id: collectionId } });
+      res.send('it is deleted');
+      // const userId = res.locals.user.id;
+      // const collections = await db.Collection.findAll({
+      //   include: 'Games',
+      //   where: {
+      //     user_id: userId,
+      //   },
+      // });
+      // res.render('vault-view', { collections });
+    }
+  })
+);
 
 module.exports = router;

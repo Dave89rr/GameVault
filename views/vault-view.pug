@@ -1,5 +1,5 @@
 extends layout.pug
-include utils.pug 
+include utils.pug
 
 block content
     link(rel="stylesheet" href="/stylesheets/main.css")
@@ -8,6 +8,8 @@ block content
         img
         h1=user.username
         h2 Bio: #{user.bio}
+        a(href=`/users/${user.id}/edit`)
+          button(type='button'id='editProfile') Edit
     div(id='entries')
         div(id='collections')
             h3 Collections
@@ -17,7 +19,5 @@ block content
                 div(id='games')
                     each game in collection.Games
                       +gameCard(game)
-
-    input(type='button' value='Add a New Collection')
-
-    footer
+    a(href='/collections/new')
+      button(type='button' id='new-collection') Add a new collection!
