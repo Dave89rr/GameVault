@@ -8,6 +8,8 @@ block content
         img
         h1=user.username
         h2 Bio: #{user.bio}
+        a(href=`/users/${user.id}/edit`)
+          button(type='button'id='editProfile') Edit
     div(id='entries')
         div(id='collections')
             h3 Collections

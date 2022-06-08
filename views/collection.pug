@@ -7,14 +7,18 @@ block content
     div
         h1= collection.name
         h2= collection.description
+    button(type='button' id='editCollection') Edit
     div(class='img-box')
         if collection.Games
             each game in collection.Games
               +gameCard(game)
     div(id='addGamesSelect')
-      select(name='game_id')
-        option(value='1') Game1
-        option(value='1') Game2
-        option(value='1') Game3
+      form(action='' method='get')
+        select(name='game_id' id='selectValue')
+          option(value='1') Game1
+          option(value='2') Game2
+          option(value='3') Game3
+        input(type='button' id='addGameToColl' value='add game')
         //- each game in allGames
           option(value=game.game_id)= game.name
+    script(src='/javascripts/index.js')
