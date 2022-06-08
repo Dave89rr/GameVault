@@ -18,7 +18,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: 'Human: Fall Falt',
+          name: 'Human: Fall Flat',
           publisher: 'No Brakes Games',
           release_date: '2016-07-22',
           synopsis:
@@ -69,7 +69,7 @@ module.exports = {
           synopsis:
             'Diablo Immortal is a free-to-play video game in the Diablo series, designed primarily for mobile devices.',
           img_url:
-            'https://www.hitc.com/static/uploads/2022/06/Diablo-Immortal-early-release-and-how-to-download-on-Google-Play-iOS-1024x601.jpg',
+            'https://m.media-amazon.com/images/M/MV5BZjQ4ZjBmYjctOTI3Mi00ZTY3LTgxNzMtMzMwZTcxMjA2YzNjXkEyXkFqcGdeQXVyNzg3NjQyOQ@@._V1_FMjpg_UX346_.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -236,8 +236,7 @@ module.exports = {
           release_date: '2016-04-05',
           synopsis:
             'Enter the Gungeon is a bullet hell roguelike video game developed by Dodge Roll and published by Devolver Digital. The game follows four adventurers as they descend into the titular Gungeon (a firearms-themed dungeon) to find a gun that has the power to kill their past.',
-          img_url:
-            'https://static-cdn.jtvnw.net/ttv-boxart/488632_IGDB-285x380.jpg',
+          img_url: 'https://static.tvtropes.org/pmwiki/pub/images/etg.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -259,7 +258,7 @@ module.exports = {
           synopsis:
             'The Legend of Zelda: Ocarina of Time is a fantasy action-adventure game set in an expansive environment.[3] The player controls series protagonist Link from a third-person perspective in a three-dimensional world. Link primarily fights with a sword and shield, but can also use other weapons such as projectiles, bombs, and magic spells.',
           img_url:
-            'https://zelda.fandom.com/wiki/The_Legend_of_Zelda:_Ocarina_of_Time',
+            'https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/48/OoT_NA_Box.jpg/revision/latest/scale-to-width-down/1000?cb=20210925032343',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
