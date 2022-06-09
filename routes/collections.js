@@ -84,16 +84,20 @@ router.get( //won't render
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
+    const allGames = await db.Game.findAll();
+    console.log(allGames);
+    
     const collection = await db.Collection.findOne({
       include: 'Games',
       where: {
         id: parseInt(req.params.id, 10),
       },
     });
-    console.log(collection.Games);
+
     res.render('collection', {
       title: 'collection page',
       collection: collection,
+      allGames
     });
   })
 );

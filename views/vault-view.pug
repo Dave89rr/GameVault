@@ -4,12 +4,12 @@ include utils.pug
 block content
     link(rel="stylesheet" href="/stylesheets/main.css")
     link(rel="stylesheet" href="/stylesheets/vault.css")
+    link(rel="stylesheet" href="/stylesheets/form.css")
     div(id='user-info')
-        img
-        h1=user.username
-        h2 Bio: #{user.bio}
-        a(href=`/users/${user.id}/edit`)
-          button(type='button' id='editProfile') Edit
+        img(src=user.icon id='liveIcon')
+        h1(id='liveName')=user.username
+        h2(id='liveBio') Bio: #{user.bio}
+        button(type='button' id='editProfile') Edit
     div(id='entries')
         div(id='collections')
             h3 Collections
@@ -22,3 +22,23 @@ block content
                       +gameCard(game)
     a(href='/collections/new')
       button(type='button' id='new-collection') Add a new collection!
+    div(class='editForm' id='editDetails')
+      form(id='editFormitself')
+        img(src=user.icon id='editIconImg')
+        label(for='editName') Name: 
+        input(type='text' id='editName' value=user.username)
+        label(for='editBio') Bio: 
+        textarea(id='editBio' rows='5' cols='5')= user.bio
+        input(type='button' id='cancelChanges' value='Cancel')
+        input(type='button' id='saveChanges' value='Save')
+    div(class='editForm' id='editIcon')
+      form()
+        fieldset(id='iconSelection')
+          legend= 'Choose your character'
+          +imgCheckbox('icon1')
+          +imgCheckbox('icon2')
+          +imgCheckbox('icon3')
+        input(type='button' id='cancelIconChange' value='Cancel')
+        input(type='button' id='saveIconChange' value='Save')
+
+    script(src='/javascripts/editProfile.js')

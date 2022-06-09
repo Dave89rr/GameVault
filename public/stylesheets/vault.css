@@ -4,3 +4,31 @@
   margin: auto;
   width: 1500px;
 }
+
+#editDetails {
+  display: none;
+}
+
+#editIcon {
+  display: none;
+}
+
+#editBio {
+  min-height: 40px;
+  max-height: 367px;
+  max-width: 910px;
+  min-width: 910px;
+}
+
+.editForm {
+  z-index: 1;
+  max-width: 50%;
+  max-height: 600px;
+  margin: auto;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  border-radius: 9px;
+  background-color: gray;
+}

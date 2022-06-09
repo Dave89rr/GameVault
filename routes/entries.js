@@ -11,14 +11,30 @@ router.post(
   /*requireAuth*/ asyncHandler(async (req, res) => {
     const { game_id, collection_id } = req.body;
 
-    const entry = await db.Entry.create({
-      game_id: game_id,
-      played_status_id: 1,
-      collection_id: collection_id,
-    });
-    const game = await db.Game.findByPk(game_id);
+    const check = await db.Entry.findOne({
+      where: {
 
-    res.send({ message: 'db updated', game });
+        game_id: game_id,
+        played_status_id: 1,
+        collection_id: collection_id,
+      }
+    });
+
+    if (!check) {
+
+      const entry = await db.Entry.create({
+        game_id: game_id,
+        played_status_id: 1,
+        collection_id: collection_id,
+      });
+
+      const game = await db.Game.findByPk(game_id);
+
+      res.send({ message: 'db updated', game });
+    } else {
+      res.send({ message: 'Game already present' })
+    }
+
 
     // res.render('collection', { collection });
     // res.send('hi');
