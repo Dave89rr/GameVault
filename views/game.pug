@@ -1,22 +1,29 @@
-extends layout.pug 
+extends layout.pug
 
 block content
   link(rel="stylesheet", href="/stylesheets/vault.css")
   h1= game.name
-  h2= game.publisher 
+  h2= game.publisher
   h2= game.synopsis
-  div 
+  div
     img(src=game.img_url)
   button(type="submit") Add to Collection
   if reviews
-    ul 
+    ul
       each review in reviews
         div(class="ind-review")
-          p #{review.User.username} rated 
+          p #{review.User.username} rated
             span=review.stars
-          p=review.content 
+          p=review.content
   if loggedInUser
-    form(action=`/games/${game.id}/reviews` method="post")
-      textarea(name="content" id="content" required) 
-      button(type="submit" id="postReview") Add review
+    form(action=`` method="get")
+      select(name='ratings' id='ratings' required)
+        option(value='1') 1
+        option(value='2') 2
+        option(value='3') 3
+        option(value='4') 4
+        option(value='5') 5
+      textarea(name="content" id="content" required)
+      input(type="button" id="postReview" value='Add review')
+  
   script(src='/javascripts/postReview.js')

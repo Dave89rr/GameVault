@@ -24,14 +24,16 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => { //individual game pa
 }))
 
 router.post('/:id(\\d+)/reviews', requireAuth, asyncHandler(async (req, res) => {
-    const { content } = req.body;
+    const { content, ratings } = req.body;
+    console.log(req.body);
     const gameId = parseInt(req.params.id, 10);
     const userId = res.locals.user.id;
+
     const review = await db.Review.create({
         game_id: gameId,
         user_id: userId,
         content: content,
-        stars: "5"
+        stars: ratings
     })
 
     const user = await db.User.findByPk(userId)

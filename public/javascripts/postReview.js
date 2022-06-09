@@ -5,8 +5,9 @@ document.getElementById("postReview")
             //console.log(url)
             const gameId = url.split('/')[2];
             const content = document.getElementById('content').value;
+            const ratings = document.getElementById('ratings').value
             //console.log(content);
-            const jsonBody = JSON.stringify({ content });
+            const jsonBody = JSON.stringify({ content, ratings });
             const catchResponse = await fetch(`${url}/reviews`, {
                 method: "post",
                 headers: { "Content-Type":"application/json"},
