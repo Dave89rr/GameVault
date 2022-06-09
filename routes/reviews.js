@@ -8,18 +8,31 @@ const { requireAuth } = require('../auth');
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => { //individual game page
     const gameId = req.params.id
-    const game = await db.Game.findOne({ include: 'Reviews', where: { id:gameId }})
+    const game = await db.Game.findOne({ include: 'Reviews', where: { id: gameId }})
 
     const reviews = await db.Review.findAll({include: 'User', where: {game_id: gameId}});
     //console.log(reviews[0].User)
     let loggedInUser
+    let userCollections
     if (req.session.auth) {
         loggedInUser = req.session.auth.userId
     }
+
+    if (loggedInUser) {
+        userCollections = await db.Collection.findAll({
+            where: {
+                user_id: loggedInUser
+            }
+        })
+    } else {
+        userCollections = null;
+    }
+
     res.render('game', {
         game: game,
         reviews: reviews,
-        loggedInUser: loggedInUser
+        loggedInUser: loggedInUser,
+        userCollections: userCollections
     })
 }))
 

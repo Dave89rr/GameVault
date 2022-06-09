@@ -7,7 +7,12 @@ block content
   h2= game.synopsis
   div
     img(src=game.img_url)
-  button(type="submit") Add to Collection
+  if loggedInUser
+    form(action="", method="get")
+      select(name='collection_id' id='collection_id' required)
+        each collection in userCollections
+          option(value=`${collection.id}`)= collection.name
+    button(type="submit" id='gamePageAdd') Add to Collection
   if reviews
     ul
       each review in reviews
@@ -25,5 +30,6 @@ block content
         option(value='5') 5
       textarea(name="content" id="content" required)
       input(type="button" id="postReview" value='Add review')
-  
+
   script(src='/javascripts/postReview.js')
+  script(src='/javascripts/gamePageAdd.js')
