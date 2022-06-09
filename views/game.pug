@@ -1,6 +1,7 @@
 extends layout.pug 
 
 block content
+  link(rel="stylesheet", href="/stylesheets/vault.css")
   h1= game.name
   h2= game.publisher 
   h2= game.synopsis
@@ -10,8 +11,12 @@ block content
   if reviews
     ul 
       each review in reviews
-        p=review.content 
-        p=review.stars
-  form(action=`/games/${game.id}/reviews` method="post")
-    textarea(name="content" id="content" required) 
-    button(type="submit") Add review
+        div(class="ind-review")
+          p #{review.User.username} rated 
+            span=review.stars
+          p=review.content 
+  if loggedInUser
+    form(action=`/games/${game.id}/reviews` method="post")
+      textarea(name="content" id="content" required) 
+      button(type="submit" id="postReview") Add review
+  script(src='/javascripts/postReview.js')
