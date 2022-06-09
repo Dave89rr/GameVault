@@ -22,6 +22,11 @@ block content
           p=review.content
           if loggedInUser === review.user_id
             button(class="delete-btn" id=`delete-review-${review.id}`) Delete
+            button(class="edit-btn" id=`edit-review-${review.id}`) Edit
+            form(class='hidden' id=`edit-form-review-${review.id}`)
+              label Content
+              input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
+              button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit
   if loggedInUser
     form(action=`` method="get")
       select(name='ratings' id='ratings' required)
@@ -36,3 +41,4 @@ block content
   script(src='/javascripts/postReview.js')
   script(src='/javascripts/gamePageAdd.js')
   script(src='/javascripts/deleteReview.js')
+  script(src='/javascripts/editReview.js')

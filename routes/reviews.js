@@ -65,6 +65,20 @@ router.post(
   })
 );
 
+router.put('/:id(\\d+)/reviews/:reviewId(\\d+)', asyncHandler( async (req, res) => {
+  const reviewId = req.params.reviewId;
+  const review = await db.Review.findByPk(reviewId);
+  // const { content } = req.body;
+  const user = await db.User.findByPk(review.user_id)
+  console.log(reviewId);
+  review.content = req.body.content
+  await review.save();
+
+  res.send({ message: 'edit successful', review, user })
+
+
+}))
+
 router.delete(
   '/:id(\\d+)/reviews/:reviewId(\\d+)',
   asyncHandler(async (req, res) => {

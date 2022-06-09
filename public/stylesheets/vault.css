@@ -32,3 +32,7 @@
   border-radius: 9px;
   background-color: gray;
 }
+
+.hidden {
+  display: none
+}
