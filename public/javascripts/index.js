@@ -9,6 +9,8 @@ document
       game_id: selectValue,
       collection_id: collectionID,
     };
+    console.log(selectValue);
+
     const jsonBody = JSON.stringify(bodyObj);
     const catchResponse = await fetch(`${url}/entries/`, {
       method: 'post',
