@@ -5,7 +5,7 @@ block content
     link(rel="stylesheet" href="/stylesheets/main.css")
     link(rel="stylesheet" href="/stylesheets/vault.css")
     div(id='user-info')
-        img
+        img(src=user.icon)
         h1=user.username
         h2 Bio: #{user.bio}
         a(href=`/users/${user.id}/edit`)

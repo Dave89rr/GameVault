@@ -16,5 +16,10 @@ block content
             input(type="password" id="password" name="password")
             label(for="confirm-password") Confirm Password
             input(type="password" id="confirm-password" name="confirmPassword")
+            fieldset
+              legend= 'Choose your character'
+              +imgCheckbox('icon1')
+              +imgCheckbox('icon2')
+              +imgCheckbox('icon3')
             button(type="submit") Register
             a(href="/users/login") Sign in Here
