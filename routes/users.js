@@ -186,11 +186,12 @@ router.put(
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const { bio } = req.body;
+    const { bio, icon } = req.body;
     const userId = req.params.id;
     const user = await db.User.findByPk(userId);
-    await user.update({ bio });
-    res.redirect(`users/${userId}`);
+    if (bio) await user.update({ bio });
+    else await user.update({ icon });
+    res.send({ message: 'Success' });
   })
 );
 
