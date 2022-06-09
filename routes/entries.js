@@ -6,25 +6,50 @@ const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
-router.post('/', /*requireAuth*/ asyncHandler(async (req, res) => {
-    const { game_id } = req.body;
-    const collection_id = parseInt(req.originalUrl.split('/')[2], 10);
 
-    const collection = await db.Collection.findByPk(collection_id);
-    const entry = await db.Entry.create({
+
+router.post(
+  '/',
+  requireAuth, asyncHandler(async (req, res) => {
+    const { game_id, collection_id } = req.body;
+
+    const check = await db.Entry.findOne({
+      where: {
+
         game_id: game_id,
         played_status_id: 1,
-        collection_id: collection_id
+        collection_id: collection_id,
+      }
     });
-    //res.send('it is done')
 
-    res.render('collection', { collection });
-}));
+    if (!check) {
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const entryId = parseInt(req.params.id,10);
-    await db.Entry.destroy({where: {id: entryId}});
-    res.send('it is deleted')
-}))
+      const entry = await db.Entry.create({
+        game_id: game_id,
+        played_status_id: 1,
+        collection_id: collection_id,
+      });
+
+      const game = await db.Game.findByPk(game_id);
+
+      res.send({ message: 'db updated', game });
+    } else {
+      res.send({ message: 'Game already present' })
+    }
+
+
+    // res.render('collection', { collection });
+    // res.send('hi');
+  })
+);
+
+router.delete(
+  '/:id(\\d+)',
+  asyncHandler(async (req, res) => {
+    const entryId = parseInt(req.params.id, 10);
+    await db.Entry.destroy({ where: { id: entryId } });
+    res.send('it is deleted');
+  })
+);
 
 module.exports = router;

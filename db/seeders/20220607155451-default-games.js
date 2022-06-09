@@ -258,7 +258,7 @@ module.exports = {
           synopsis:
             'The Legend of Zelda: Ocarina of Time is a fantasy action-adventure game set in an expansive environment.[3] The player controls series protagonist Link from a third-person perspective in a three-dimensional world. Link primarily fights with a sword and shield, but can also use other weapons such as projectiles, bombs, and magic spells.',
           img_url:
-            'https://static.wikia.nocookie.net/zelda_gamepedia_en/images/4/48/OoT_NA_Box.jpg/revision/latest/scale-to-width-down/1000?cb=20210925032343',
+            'https://m.media-amazon.com/images/M/MV5BZjVkYjdlNGQtZWY3ZS00MDIwLTgwOTItYWE4NTBjZTgwZTczXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
