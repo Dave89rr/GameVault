@@ -80,13 +80,12 @@ router.post(
   })
 );
 
-router.get( //won't render
+router.get(
+  //won't render
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
     const allGames = await db.Game.findAll();
-    console.log(allGames);
-    
     const collection = await db.Collection.findOne({
       include: 'Games',
       where: {
@@ -97,7 +96,7 @@ router.get( //won't render
     res.render('collection', {
       title: 'collection page',
       collection: collection,
-      allGames
+      allGames,
     });
   })
 );

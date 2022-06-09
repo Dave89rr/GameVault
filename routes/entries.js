@@ -6,9 +6,11 @@ const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
+
+
 router.post(
   '/',
-  /*requireAuth*/ asyncHandler(async (req, res) => {
+  requireAuth, asyncHandler(async (req, res) => {
     const { game_id, collection_id } = req.body;
 
     const check = await db.Entry.findOne({
