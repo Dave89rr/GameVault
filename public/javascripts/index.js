@@ -35,11 +35,13 @@ document
       /*   div(class='card')
     .game-title
       p= game.name
-    a(href=`/games/${game.id}`)  
+    a(href=`/games/${game.id}`)
       div(class='home-img' style=`background-image: url(${game.img_url});`) */
 
       const imageBox = document.querySelector('.img-box');
 
       imageBox.appendChild(card);
+    } else {
+      alert('Game is already in your collection')
     }
   });
