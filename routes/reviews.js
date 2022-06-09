@@ -53,4 +53,11 @@ router.post('/:id(\\d+)/reviews', requireAuth, asyncHandler(async (req, res) => 
     res.send({ message: 'review ok', review, user});
 }));
 
+router.delete('/:id(\\d+)/reviews/:reviewId(\\d+)', asyncHandler(async (req, res) => {
+    const reviewId = req.params.reviewId
+    const review = await db.Review.findByPk(reviewId)
+    await review.destroy()
+    res.send({ message: 'deleted' })
+}))
+
 module.exports = router;

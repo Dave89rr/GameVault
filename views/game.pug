@@ -16,10 +16,12 @@ block content
   if reviews
     ul
       each review in reviews
-        div(class="ind-review")
+        div(class="ind-review" id=`review-container-${review.id}`)
           p #{review.User.username} rated
             span=review.stars
           p=review.content
+          if loggedInUser === review.user_id
+            button(class="delete-btn" id=`delete-review-${review.id}`) Delete
   if loggedInUser
     form(action=`` method="get")
       select(name='ratings' id='ratings' required)
@@ -33,3 +35,4 @@ block content
 
   script(src='/javascripts/postReview.js')
   script(src='/javascripts/gamePageAdd.js')
+  script(src='/javascripts/deleteReview.js')
