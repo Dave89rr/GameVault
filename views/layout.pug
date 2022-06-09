@@ -12,12 +12,13 @@ html
       div(id='login-signup')
         if locals.authenticated
           span Welcome 
-            a(href='/collections') #{user.username}!
+            a(href=`/users/${user.id}`) #{user.username}!
           form(action='/users/logout' method='post')
             button(type='submit') Logout
         else
           span
-            a(href='/users/login') Login
+            a(href='/users/demo-user') Demo User 
+            a(href='/users/login') Login 
             a(href='/users/sign-up') Sign Up
     block content
     footer created by
