@@ -17,3 +17,9 @@ mixin vaultCard(game)
     .game-title
       p= game.name
     div(class='home-img' style=`background-image: url(${game.img_url});`)
+
+
+mixin imgCheckbox(id)
+    label(for=id)
+      img(src=`/media/icons/${id}.png`)
+    input(type='checkbox' id= id class='userIconSel' value=`/media/icons/${id}.png` name='icon')

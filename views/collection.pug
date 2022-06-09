@@ -15,10 +15,7 @@ block content
     div(id='addGamesSelect')
       form(action='' method='get')
         select(name='game_id' id='selectValue')
-          option(value='1') Game1
-          option(value='2') Game2
-          option(value='3') Game3
+          each game in allGames
+            option(value=game.id)= game.name
         input(type='button' id='addGameToColl' value='add game')
-        //- each game in allGames
-          option(value=game.game_id)= game.name
     script(src='/javascripts/addGameToColl.js')

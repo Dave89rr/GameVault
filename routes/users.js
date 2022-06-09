@@ -159,32 +159,40 @@ router.post('/logout', (req, res) => {
   res.redirect('/users/login');
 });
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const userId = res.locals.user.id;
-  const collections = await db.Collection.findAll({
-    include: 'Games',
-    where: {
-      user_id: userId,
-    },
-  });
-  res.render('vault-view', { collections });
-}));
+router.get(
+  '/:id(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = res.locals.user.id;
+    const collections = await db.Collection.findAll({
+      include: 'Games',
+      where: {
+        user_id: userId,
+      },
+    });
+    res.render('vault-view', { collections });
+  })
+);
 
-router.get('/demo-user', asyncHandler(async (req, res) => {
-  const user = await db.User.findByPk(1);
-  loginUser(req, res, user);
-  res.redirect('/');
-}));
+router.get(
+  '/demo-user',
+  asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    loginUser(req, res, user);
+    res.redirect('/');
+  })
+);
 
-
-router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
-  const { bio } = req.body;
-  const userId = req.params.id;
-  const user = await db.User.findByPk(userId);
-  await user.update({ bio });
-  res.redirect(`users/${userId}`);
-}));
-
-
+router.put(
+  '/:id(\\d+)',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { bio, icon } = req.body;
+    const userId = req.params.id;
+    const user = await db.User.findByPk(userId);
+    if (bio) await user.update({ bio });
+    else await user.update({ icon });
+    res.send({ message: 'Success' });
+  })
+);
 
 module.exports = router;
