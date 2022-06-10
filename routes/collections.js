@@ -111,7 +111,7 @@ router.put(
     const collection = await db.Collection.findByPk(collectionId);
     const { name, description } = req.body;
     await collection.update({ name, description });
-    res.render('collection', { collection });
+    res.json({message: 'edit successful', collection, name, description });
   })
 );
 

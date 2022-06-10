@@ -3,12 +3,20 @@ extends layout.pug
 block content
   link(rel="stylesheet", href="/stylesheets/vault.css")
   link(rel='stylesheet' href='/stylesheets/games.css')
-  div.game-container
-    img(src=game.img_url id='gameImg')
+  div(class="game-container")
+    div(class="game-img-container" style=`background-image: url(${game.img_url});`)
     div.game-info
       h1= game.name
       h2= game.publisher
-      h2= game.synopsis
+      div.reviews-container
+        div(id='starContainer')
+          div(id='emptyStars')
+            img(src='/media/empty_stars.png')
+          div(id='filledStars' style=`width:${starWidth}`)
+            img(src='/media/filled_stars.png')
+        h2 #{average} 
+        span #{numReviews} Review(s)
+      p= game.synopsis
       if loggedInUser
         div.add-collection
           form(action="", method="get")
@@ -17,27 +25,23 @@ block content
                 option(value=`${collection.id}`)= collection.name
           button(type="submit" id='gamePageAdd') Add to Collection
   if reviews
-    div.reviews-container
-      h2 #{numReviews} Review(s)
-      div(id='starContainer')
-        div(id='emptyStars')
-          img(src='/media/empty_stars.png')
-        div(id='filledStars' style=`width:${starWidth}`)
-          img(src='/media/filled_stars.png')
-    h4 Average: #{average} / 5 
-    ul
+    div(class="big-review-container")
+      h2 Reviews and Ratings
       each review in reviews
         div(class="ind-review" id=`review-container-${review.id}`)
-          p #{review.User.username} rated
-            span=review.stars
-          p(id=`reviewContent-${review.id}`)=review.content
-          if loggedInUser === review.user_id
-            button(class="delete-btn" id=`delete-review-${review.id}`) Delete
-            button(class="edit-btn" id=`edit-review-${review.id}`) Edit
-            form(class='hidden' id=`edit-form-review-${review.id}`)
-              label Content
-              input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
-              button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit
+          div(class="user-rated-stars")
+            p #{review.User.username}
+              span rated #{review.stars}
+          div(class="review-and-button")
+            p(id=`reviewContent-${review.id}`)=review.content
+            if loggedInUser === review.user_id
+              div(class="delete-and-edit")
+                button(class="delete-btn" id=`delete-review-${review.id}`) Delete
+                button(class="edit-btn" id=`edit-review-${review.id}`) Edit
+                form(class='hidden' id=`edit-form-review-${review.id}`)
+                  label Content
+                  input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
+                  button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit
   if loggedInUser
     div.ratings-container
       form(action=`` method="get")
