@@ -91,21 +91,22 @@ try {
       const indReview = document.createElement('div');
       indReview.setAttribute('class', 'ind-review');
       indReview.setAttribute('id', `review-container-${data.review.id}`);
-      indReview.innerHTML = `
-      <p>${data.user.username} rated <span>${data.review.stars}<span></p>
-      <p id='reviewContent-${data.review.id}'>${data.review.content}</p>
-      <button class='delete-btn' id='delete-review-${data.review.id}'>Delete</button><button class='edit-btn' id='edit-review-${data.review.id}'>Edit</button>
-      <form class='hidden' id='edit-form-review-${data.review.id}'><label>Content</label>
-      <input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
-      <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
-      </form>
+      indReview.innerHTML = `<div class='user-rated-stars'>
+<p>${data.user.username}<span>rated ${data.review.stars}<span></p></div>
+<div class='review-and-button'><p id='reviewContent-${data.review.id}'>${data.review.content}</p>
+<div class='delete-and-edit'><button class='delete-btn' id='delete-review-${data.review.id}'>Delete</button><button class='edit-btn' id='edit-review-${data.review.id}'>Edit</button>
+<form class='hidden' id='edit-form-review-${data.review.id}'><label>Content</label>
+<input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
+<button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
+</form></div></div>
       `;
 
       /* form(class='hidden' id=`edit-form-review-${review.id}`)
       label Content
       input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
       button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit */
-      const ul = document.querySelector('ul');
+      const ul = document.querySelector('.big-review-container');
+      console.log(ul);
       ul.appendChild(indReview);
       textarea.value = '';
       document
