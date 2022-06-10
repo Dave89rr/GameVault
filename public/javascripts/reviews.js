@@ -30,11 +30,9 @@ const editBtns = document.querySelectorAll('.edit-btn');
 
 const editReview = (e) => {
   e.stopPropagation();
-  // console.log('hello from edit button')
   const reviewId = e.target.id.split('-')[2];
   const editReview = document.getElementById(`edit-form-review-${reviewId}`);
 
-  // console.log(editReview)
   if (editReview.classList.contains('hidden')) {
     editReview.classList.remove('hidden');
   } else {
@@ -48,7 +46,6 @@ const editReview = (e) => {
     const url = window.location.pathname;
     const gameId = url.split('/')[2];
     const fetchUrl = `/games/${gameId}/reviews/${reviewId}`;
-    // console.log(content);
 
     const res = await fetch(fetchUrl, {
       method: 'put',
@@ -59,12 +56,10 @@ const editReview = (e) => {
     });
 
     const data = await res.json();
-    // console.log(data);
     if (data.message === 'edit successful') {
       const reviewContainer = document.getElementById(
         `reviewContent-${data.review.id}`
       );
-      //   console.log(reviewContainer);
       reviewContainer.innerText = `${data.review.content}`;
       editReview.classList.add('hidden');
     }

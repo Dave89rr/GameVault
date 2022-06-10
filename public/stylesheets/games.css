@@ -1,0 +1,55 @@
+.game-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#gameImg {
+    max-width: 200px;
+    max-height: 300px;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-collection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    background-color: hotpink;
+}
+
+.reviews-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.ind-review {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-btn,
+.edit-btn {
+    background: none;
+    border: none
+}
+
+.delete-btn,
+.edit-btn,
+#postReview,
+#gamePageAdd,
+#ratings,
+#collection_id:hover {
+    cursor: pointer;
+}
+
+.ind-review span {
+    margin-left: 5px;
+}
