@@ -8,7 +8,7 @@ for (let i = 0; i < deleteBtns.length; i++) {
     const url = window.location.pathname;
     const gameId = url.split('/')[2];
     const reviewId = e.target.id.split('-')[2];
-    fetchUrl = `/games/${gameId}/reviews/${reviewId}`;
+    const fetchUrl = `/games/${gameId}/reviews/${reviewId}`;
     const res = await fetch(fetchUrl, {
       method: 'DELETE',
     });
