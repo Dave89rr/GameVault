@@ -14,7 +14,12 @@ block content
           option(value=`${collection.id}`)= collection.name
     button(type="submit" id='gamePageAdd') Add to Collection
   if reviews
-    h2 Reviews 
+    h2 #{numReviews} Review(s)
+    div(id='starContainer')
+      div(id='emptyStars')
+        img(src='/media/empty_stars.png')
+      div(id='filledStars' style=`width:${starWidth}`)
+        img(src='/media/filled_stars.png')
     h4 Average: #{average} / 5 
     ul
       each review in reviews

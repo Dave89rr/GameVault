@@ -76,49 +76,53 @@ for (let i = 0; i < editBtns.length; i++) {
 }
 
 // ------------------- Post a Review ------------------- //
-document.getElementById('postReview').addEventListener('click', async (e) => {
-  e.preventDefault();
-  const url = window.location.pathname;
-  const gameId = url.split('/')[2];
-  const content = document.getElementById('content').value;
-  const textarea = document.getElementById('content');
-  const ratings = document.getElementById('ratings').value;
-  const jsonBody = JSON.stringify({ content, ratings });
-  const catchResponse = await fetch(`${url}/reviews`, {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    body: jsonBody,
+try {
+  document.getElementById('postReview').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const url = window.location.pathname;
+    const gameId = url.split('/')[2];
+    const content = document.getElementById('content').value;
+    const textarea = document.getElementById('content');
+    const ratings = document.getElementById('ratings').value;
+    const jsonBody = JSON.stringify({ content, ratings });
+    const catchResponse = await fetch(`${url}/reviews`, {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonBody,
+    });
+
+    const data = await catchResponse.json();
+    if (data.message === 'review ok') {
+      const indReview = document.createElement('div');
+      indReview.setAttribute('class', 'ind-review');
+      indReview.setAttribute('id', `review-container-${data.review.id}`);
+      indReview.innerHTML = `
+      <p>${data.user.username} rated <span>${data.review.stars}<span></p>
+      <p id='reviewContent-${data.review.id}'>${data.review.content}</p>
+      <button class='delete-btn' id='delete-review-${data.review.id}'>Delete</button><button class='edit-btn' id='edit-review-${data.review.id}'>Edit</button>
+      <form class='hidden' id='edit-form-review-${data.review.id}'><label>Content</label>
+      <input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
+      <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
+      </form>
+      `;
+
+      /* form(class='hidden' id=`edit-form-review-${review.id}`)
+      label Content
+      input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
+      button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit */
+      const ul = document.querySelector('ul');
+      ul.appendChild(indReview);
+      textarea.value = '';
+      document
+        .getElementById(`delete-review-${data.review.id}`)
+        .addEventListener('click', deleteReview);
+      document
+        .getElementById(`edit-review-${data.review.id}`)
+        .addEventListener('click', editReview);
+    } else {
+      alert('Sorry, one review per user');
+    }
   });
-
-  const data = await catchResponse.json();
-  if (data.message === 'review ok') {
-    const indReview = document.createElement('div');
-    indReview.setAttribute('class', 'ind-review');
-    indReview.innerHTML = `
-        <p>${data.user.username} rated <span>${data.review.stars}<span></p>
-        <p id='reviewContent-${data.review.id}'>${data.review.content}</p>
-        <button class='delete-btn' id='delete-review-${data.review.id}'>Delete</button>
-        <button class='edit-btn' id='edit-review-${data.review.id}'>Edit</button>
-        <form class='hidden' id='edit-form-review-${data.review.id}'><label>Content</label>
-        <input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
-        <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
-        </form>
-        `;
-
-    /* form(class='hidden' id=`edit-form-review-${review.id}`)
-              label Content
-              input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
-              button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit */
-    const ul = document.querySelector('ul');
-    ul.appendChild(indReview);
-    textarea.value = '';
-    document
-      .getElementById(`delete-review-${data.review.id}`)
-      .addEventListener('click', deleteReview);
-    document
-      .getElementById(`edit-review-${data.review.id}`)
-      .addEventListener('click', editReview);
-  } else {
-    alert('Sorry, one review per user');
-  }
-});
+} catch (e) {
+  // do nothing
+}

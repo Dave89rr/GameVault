@@ -36,11 +36,22 @@ router.get(
       userCollections = null;
     }
     const ratings = reviews.map((review) => review.stars);
-    const average = ratings.reduce((a, b) => a + b, 0) / ratings.length;
+    const numReviews = ratings.length;
+    let average;
+    if (numReviews > 0) {
+      average = (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(
+        1
+      );
+    } else {
+      average = 0;
+    }
+    const starWidth = `${(average / 5) * 172}px`;
     res.render('game', {
       game: game,
       reviews: reviews,
       average,
+      numReviews,
+      starWidth,
       loggedInUser: loggedInUser,
       userCollections: userCollections,
     });
