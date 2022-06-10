@@ -81,9 +81,9 @@ router.post(
 );
 
 router.get(
-  //won't render
   '/:id(\\d+)',
-  requireAuth, csrfProtection,
+  requireAuth,
+  csrfProtection,
   asyncHandler(async (req, res) => {
     const allGames = await db.Game.findAll();
     const collection = await db.Collection.findOne({
@@ -94,13 +94,12 @@ router.get(
     });
 
     const allStatuses = await db.PlayedStatus.findAll();
-    // console.log(allStatuses);
 
     res.render('collection', {
       title: 'collection page',
       collection: collection,
       allGames,
-      allStatuses
+      allStatuses,
     });
   })
 );

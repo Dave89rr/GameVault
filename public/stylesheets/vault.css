@@ -32,3 +32,20 @@
   border-radius: 9px;
   background-color: gray;
 }
+
+.hidden {
+  display: none;
+}
+
+#liveIcon {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+#user-info {
+  margin-left: 10%;
+}
+
+#gameImg {
+  max-width: 300px;
+}
