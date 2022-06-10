@@ -1,16 +1,63 @@
 .game-container {
     display: flex;
     flex-direction: row;
+    /* justify-content: space-around; */
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 10px;
 }
 
-#gameImg {
-    max-width: 200px;
-    max-height: 300px;
+.big-review-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    /* background-color: #fffbeb; */
+}
+
+
+.big-review-container h2 {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.ratings-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.ratings-container textarea {
+    width: 900px;
+}
+
+.ratings-container form {
+    display: flex;
+    flex-direction: row;
 }
 
 .game-info {
+    max-width: 600px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-right: 50px;
+}
+
+.game-info > h1 {
+    font-weight: bold;
+}
+
+.game-info > p {
+    /* padding-top: 20px; */
+    font-size: 1.2rem;
+}
+
+.game-info h2 {
+    color: #52525b;
 }
 
 .add-collection {
@@ -20,9 +67,12 @@
 }
 
 .reviews-container {
+    padding-top: 10px;
     display: flex;
-    flex-direction: column;
-    background-color: hotpink;
+    flex-direction: row;
+    /* background-color: hotpink; */
+    justify-content: space-between;
+    align-items: center;
 }
 
 .reviews-container h2 {
@@ -30,9 +80,21 @@
     font-weight: bold;
 }
 
+.reviews-container h2 span {
+    color: #52525b;
+}
+
 .ind-review {
     display: flex;
     flex-direction: column;
+    max-width: 1000px;
+}
+
+.review-and-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .delete-btn,
@@ -52,4 +114,17 @@
 
 .ind-review span {
     margin-left: 5px;
+}
+
+.user-rated-stars p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.review-and-button p{
+    margin-top: 5px;
+}
+
+.delete-and-edit {
+    align-self: flex-start;
 }

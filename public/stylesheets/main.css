@@ -9,6 +9,7 @@ html {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  border-radius: 10px;
 }
 
 .img-box {
@@ -70,6 +71,8 @@ header {
   padding: 0;
   outline: 0;
   font-weight: normal;
+  font-family: 'ABeeZee', sans-serif;
+  color: #27272a;
 }
 
 body {
