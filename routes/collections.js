@@ -121,13 +121,10 @@ router.delete(
   asyncHandler(async (req, res) => {
     const collectionId = req.params.id;
     const userId = res.locals.user.id;
-    console.log('thi is the the user id' + userId)
     const collection = await db.Collection.findByPk(collectionId);
-    // console.log(collection)
-    // res.redirect(`/users/${userId}`)
 
     await collection.destroy();
-    res.send({message: 'it is deleted', userId});
+    res.send({ message: 'it is deleted', userId });
   })
 );
 
