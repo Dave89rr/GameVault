@@ -25,9 +25,9 @@ block content
     div(class='editForm' id='editDetails')
       form(id='editFormitself')
         img(src=user.icon id='editIconImg')
-        label(for='editName') Name: 
+        label(for='editName') Name:
         input(type='text' id='editName' value=user.username)
-        label(for='editBio') Bio: 
+        label(for='editBio') Bio:
         textarea(id='editBio' rows='5' cols='5')= user.bio
         input(type='button' id='cancelChanges' value='Cancel')
         input(type='button' id='saveChanges' value='Save')

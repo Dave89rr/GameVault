@@ -34,5 +34,18 @@
 }
 
 .hidden {
-  display: none
+  display: none;
+}
+
+#liveIcon {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+#user-info {
+  margin-left: 10%;
+}
+
+#gameImg {
+  max-width: 300px;
 }
