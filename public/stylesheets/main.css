@@ -9,6 +9,7 @@ html {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  border-radius: 10px;
 }
 
 .img-box {
