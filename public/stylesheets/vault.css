@@ -45,3 +45,7 @@
 #user-info {
   margin-left: 10%;
 }
+
+#gameImg {
+  max-width: 300px;
+}
