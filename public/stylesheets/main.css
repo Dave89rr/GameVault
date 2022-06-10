@@ -19,7 +19,7 @@ html {
     margin-left: 5%;
     margin-right: 5%; */
   margin: auto;
-  width: 1500px;
+  width: 79%;
   padding-bottom: 50px;
 }
 
@@ -64,7 +64,7 @@ span,
 body,
 header {
   font-size: 1rem;
-  color: black;
+  /* color: black; */
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -88,8 +88,10 @@ h1 {
 }
 
 #logo-img {
+  margin-left: 100px;
   height: 50px;
   width: auto;
+  align-items: center;
 }
 
 nav {
@@ -100,12 +102,19 @@ nav {
   height: 54px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   background-color: #4a39d3;
   /* color: white; */
 }
 
-#login-signup span {
+#userInteractions span a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+#userInteractions {
+  margin-right: 100px;
   color: white;
 }
 
@@ -129,7 +138,22 @@ footer span a {
 #banner {
   top: 54px;
   min-width: 100%;
-  height: 600px;
-  background-image: url('../media/banner.png');
-  background-size: cover;
+  display: flex;
+  /* background-image: url('../media/banner.png'); */
+  /* background-size: contain; */
+  justify-content: center;
+}
+#banner img {
+  width: 100%;
+  height: 100%;
+}
+
+#content-container {
+  margin: auto;
+  width: 79%;
+}
+
+#homeTitle {
+  padding-top: 30px;
+  text-align: center;
 }

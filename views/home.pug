@@ -6,9 +6,10 @@ block content
     if locals.authenticated
     else
       div(id="banner")
-    div(id="game-display")
-    h1 What's New?
-      if games
-        div(class='img-box')
-            each game in games
-              +gameCard(game)
+       img(src='../media/banner.png')
+    div(id="content-container")
+      h1(id='homeTitle') What's New?
+    if games
+      div(class='img-box')
+          each game in games
+            +gameCard(game)

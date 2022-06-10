@@ -9,18 +9,18 @@ html
       div(id='logo')
         a(href='/')
           img(src='../media/logo.png' id='logo-img')
-      div(id='login-signup')
+      div(id='userInteractions')
         if locals.authenticated
           span Welcome 
             a(href=`/users/${user.id}`) #{user.username}!
-          form(action='/users/logout' method='post')
-            button(type='submit') Logout
+            button(type='submit' id='logoutButton') Logout
         else
           span
-            a(href='/users/demo-user') Demo User 
-            a(href='/users/login') Login 
+            a(href='/users/demo-user') Demo User
+            a(href='/users/login') Login
             a(href='/users/sign-up') Sign Up
     block content
+    script(src='/javascripts/logout.js')
     footer created by
         span
           a(href="https://github.com/Dave89rr/GameVault") Dave
