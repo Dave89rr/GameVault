@@ -1,26 +1,20 @@
-
 const deleteBtn = document.querySelector('.deleteCollBtn');
 
 const deleteAction = async (e) => {
-    e.preventDefault();
-    const url = window.location.pathname
-    // console.log('here I am')
-    const collectionId = url.split('/')[2];
-    const fetchUrl = `/collections/${collectionId}`
+  e.preventDefault();
+  const url = window.location.pathname;
+  const collectionId = url.split('/')[2];
+  const fetchUrl = `/collections/${collectionId}`;
 
-    const res = await fetch(fetchUrl, {
-        method: 'DELETE'
-    })
+  const res = await fetch(fetchUrl, {
+    method: 'DELETE',
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (data.message === 'it is deleted') {
-        // const collectionsContainer = document.querySelector('.collection-container')
-        // // console.log(collectionsContainer)
-        // collectionsContainer.remove()
-        window.location.href = `/users/${data.userId}`
-    }
+  if (data.message === 'it is deleted') {
+    window.location.href = `/users/${data.userId}`;
+  }
+};
 
-}
-
-deleteBtn.addEventListener('click', deleteAction)
+deleteBtn.addEventListener('click', deleteAction);

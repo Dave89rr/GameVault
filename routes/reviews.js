@@ -81,9 +81,9 @@ router.post(
       });
 
       const user = await db.User.findByPk(userId);
-      res.send({ message: 'review ok', review, user });
+      return res.send({ message: 'review ok', review, user });
     }
-    res.send({ message: "Whoopsie. Can't do that again." });
+    return res.send({ message: "Whoopsie. Can't do that again." });
   })
 );
 
@@ -94,7 +94,6 @@ router.put(
     const review = await db.Review.findByPk(reviewId);
     // const { content } = req.body;
     const user = await db.User.findByPk(review.user_id);
-    // console.log(reviewId);
     review.content = req.body.content;
     await review.save();
 
