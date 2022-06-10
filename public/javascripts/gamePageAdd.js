@@ -23,6 +23,8 @@ try {
 
       if (data.message === 'db updated') {
         window.alert('Game added to collection');
+      } else {
+        alert('Game already in your collection')
       }
     });
 } catch (e) {
