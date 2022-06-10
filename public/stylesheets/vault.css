@@ -49,3 +49,19 @@
 #gameImg {
   max-width: 300px;
 }
+
+#filledStars {
+  position: relative;
+  align-self: center;
+  overflow: hidden;
+}
+
+#emptyStars {
+  position: absolute;
+  align-self: center;
+  width: 172px;
+}
+#starContainer {
+  width: 150px;
+  height: 50px;
+}
