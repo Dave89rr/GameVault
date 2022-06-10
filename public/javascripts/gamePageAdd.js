@@ -8,7 +8,7 @@ document.getElementById('gamePageAdd').addEventListener('click', async (e) => {
         collection_id: collection_id
     };
     const jsonBody = JSON.stringify(bodyObj);
-    const catchResponse = await fetch(`/collections/${collection_id}/entries/`, {
+    const catchResponse = await fetch(`/entries/`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ document.getElementById('gamePageAdd').addEventListener('click', async (e) => {
 
     const data = await catchResponse.json();
 
-    if(data.message === 'db updated') {
+    if (data.message === 'db updated') {
         window.alert('Game added to collection');
     }
 })

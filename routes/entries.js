@@ -7,7 +7,7 @@ const { requireAuth } = require('../auth');
 const router = express.Router();
 
 
-
+//come back to this :)
 router.post(
   '/',
   requireAuth, asyncHandler(async (req, res) => {
@@ -44,12 +44,25 @@ router.post(
 );
 
 router.delete(
-  '/:id(\\d+)',
+  '/',
   asyncHandler(async (req, res) => {
     const entryId = parseInt(req.params.id, 10);
     await db.Entry.destroy({ where: { id: entryId } });
     res.send('it is deleted');
   })
 );
+
+
+router.put('/', asyncHandler(async (req, res) => {
+  const { played_status_id, game_id, collection_id } = req.body;
+  const entry = await db.Entry.findOne({
+    where: {
+      game_id: game_id,
+      collection_id: collection_id
+    }
+  });
+  await entry.update({ played_status_id });
+  res.json({ message: 'Success!', entry });
+}))
 
 module.exports = router;

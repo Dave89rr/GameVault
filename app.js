@@ -52,7 +52,7 @@ app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/collections', collectionsRouter);
-app.use('/collections/:id(\\d+)/entries', entriesRouter);
+app.use('/entries', entriesRouter);
 app.use('/games', reviewsRouter);
 
 // catch 404 and forward to error handler

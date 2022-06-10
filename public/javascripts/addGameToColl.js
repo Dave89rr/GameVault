@@ -10,7 +10,7 @@ document
       collection_id: collectionID,
     };
     const jsonBody = JSON.stringify(bodyObj);
-    const catchResponse = await fetch(`${url}/entries/`, {
+    const catchResponse = await fetch(`/entries/`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
