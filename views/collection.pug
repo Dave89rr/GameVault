@@ -11,7 +11,7 @@ block content
     div(class='img-box')
         if collection.Games
             each game in collection.Games
-              +gameCard(game)
+              +collectionGameCard(game)
     div(id='addGamesSelect')
       form(action='' method='get')
         select(name='game_id' id='selectValue')
@@ -19,3 +19,4 @@ block content
             option(value=game.id)= game.name
         input(type='button' id='addGameToColl' value='add game')
     script(src='/javascripts/addGameToColl.js')
+    script(src='/javascripts/playedStatus.js')

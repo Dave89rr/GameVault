@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   );
   Entry.associate = function (models) {
     // associations can be defined here
-    Entry.belongsTo( models.Game, { foreignKey: 'game_id' });
-    Entry.belongsTo( models.Collection, { foreignKey: 'collection_id' });
-    Entry.hasMany( models.PlayedStatus, { foreignKey: 'played_status_id' });
+    Entry.belongsTo(models.Game, { foreignKey: 'game_id' });
+    Entry.belongsTo(models.Collection, { foreignKey: 'collection_id' });
+    Entry.belongsTo(models.PlayedStatus, { foreignKey: 'played_status_id' });
   };
   return Entry;
 };
