@@ -19,7 +19,7 @@ document.getElementById('postReview').addEventListener('click', async (e) => {
     indReview.innerHTML = `
                 <p>${data.user.username} rated <span>${data.review.stars}<span></p>
                 <p>${data.review.content}</p>
-                <button id='delete-review-${data.review.id}'>Delete</button>
+                <button id='delete-review-${data.review.id}' class='delete-btn'>Delete</button>
                 `;
     // button(class="delete-btn" id=`delete-review-${review.id}`) Delete
     // button(class="edit-btn" id=`edit-review-${review.id}`) Edit

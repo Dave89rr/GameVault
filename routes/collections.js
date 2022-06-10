@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
-const { requireAuth } = require('../auth');
+const { requireAuth, restoreUser } = require('../auth');
 
 const router = express.Router();
 
@@ -117,25 +117,14 @@ router.put(
 
 router.delete(
   '/:id(\\d+)',
+  requireAuth,
   asyncHandler(async (req, res) => {
-    const collectionId = parseInt(req.params.id, 10);
-    const entries = await db.Entry.findAll({
-      where: { collection_id: collectionId },
-    });
-    if (entries.length != 0) {
-      res.send('need to delete all games'); //send a warning to the user
-    } else {
-      await db.Collection.destroy({ where: { id: collectionId } });
-      res.send('it is deleted');
-      // const userId = res.locals.user.id;
-      // const collections = await db.Collection.findAll({
-      //   include: 'Games',
-      //   where: {
-      //     user_id: userId,
-      //   },
-      // });
-      // res.render('vault-view', { collections });
-    }
+    const collectionId = req.params.id;
+    const userId = res.locals.user.id;
+    const collection = await db.Collection.findByPk(collectionId);
+
+    await collection.destroy();
+    res.send({ message: 'it is deleted', userId });
   })
 );
 

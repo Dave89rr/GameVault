@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Collection.belongsToMany( models.Game,  { through: 'Entry', foreignKey: 'collection_id', otherKey: 'game_id' });
     Collection.belongsTo( models.User,  { foreignKey: 'user_id' });
-    Collection.hasMany( models.Entry, { foreignKey: 'collection_id' });
+    Collection.hasMany( models.Entry, { foreignKey: 'collection_id', onDelete: 'CASCADE', hooks: true });
   };
   return Collection;
 };

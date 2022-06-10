@@ -4,14 +4,15 @@ include utils.pug
 
 block content
     link(rel="stylesheet" href="/stylesheets/main.css")
-    div
-        h1= collection.name
-        h2= collection.description
-    button(type='button' id='editCollection') Edit
-    div(class='img-box')
-        if collection.Games
-            each game in collection.Games
-              +collectionGameCard(game)
+    div.collection-container
+      h1= collection.name
+      h2= collection.description
+      button(type='button' id='editCollection') Edit
+      button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
+      div(class='img-box')
+          if collection.Games
+              each game in collection.Games
+                +collectionGameCard(game)
     div(id='addGamesSelect')
       form(action='' method='get')
         select(name='game_id' id='selectValue')
@@ -20,3 +21,4 @@ block content
         input(type='button' id='addGameToColl' value='add game')
     script(src='/javascripts/addGameToColl.js')
     script(src='/javascripts/playedStatus.js')
+    script(src='/javascripts/deleteCollection.js')
