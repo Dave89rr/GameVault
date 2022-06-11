@@ -30,17 +30,40 @@ document
       <a href='/games/${data.game.id}'>
       <div class='home-img' style='background-image: url(${data.game.img_url});'></div>
       </a>
+  <select class="status-update" id="${data.game.id}" data-collection="${collectionID}">
+    <option value="1">
+      Want to Play
+    </option>
+    <option value="2">Currently Playing</option>
+    <option value="3">Want to buy</option>
+    <option value="4">Played through</option>
+    <option value="5">100% Achievements</option>
+  </select>
       `;
-
-      /*   div(class='card')
-    .game-title
-      p= game.name
-    a(href=`/games/${game.id}`)
-      div(class='home-img' style=`background-image: url(${game.img_url});`) */
-
       const imageBox = document.querySelector('.img-box');
 
       imageBox.appendChild(card);
+      // unable to figure out how to import this callback from playedStatus.js
+      // without turning playedStatus into a module. Unfortunately had to copy
+      // it here thus making our code a little more wet 😢
+      document
+        .getElementById(`${data.game.id}`)
+        .addEventListener('change', async (e) => {
+          const newStatus = e.target.value;
+          const colId = e.target.dataset.collection;
+          const gameId = e.target.id;
+          await fetch('/entries', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              game_id: gameId,
+              played_status_id: newStatus,
+              collection_id: colId,
+            }),
+          });
+        });
     } else {
       alert('Game is already in your collection');
     }
