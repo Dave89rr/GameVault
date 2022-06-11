@@ -1,0 +1,79 @@
+body {
+  background-color: black;
+}
+.svg-holder {
+  margin: auto;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 100%;
+  }
+}
+
+#gameOver {
+  width: 47%;
+  top: 17px;
+  animation: 0.75s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
+}
+
+#eyes {
+  width: 59%;
+  top: 35px;
+  animation: 1.75s linear 250ms 1 forwards fadeIn;
+  opacity: 0%;
+}
+
+#text {
+  width: 54%;
+  top: 56px;
+  animation: 0.75s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
+}
+
+#containerMaybe {
+  height: 50px;
+  top: 30px;
+  width: 6%;
+  animation: 1s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
+}
+
+#psudoBtn {
+  z-index: 1;
+  width: 100%;
+  top: 45px;
+  height: 50px;
+  position: relative;
+}
+
+#containerMaybe:hover > #yesContainer {
+  filter: drop-shadow(0px 0px 6px #3ac7e3);
+  transition: 0.3s;
+}
+#yesContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-self: center;
+  transition: 0.3s;
+}
+
+#yesText {
+  width: 75%;
+  margin-left: 7px;
+}
+
+#arrow {
+  width: 12%;
+  margin-right: 7px;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
