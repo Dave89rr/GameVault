@@ -1,8 +1,10 @@
 #games {
   display: flex;
   flex-direction: row;
-  margin: auto;
-  width: 1500px;
+  margin-left: 10.4%;
+  width: 1200px;
+  overflow: hidden;
+  float: left;
 }
 
 #editDetails {
@@ -67,16 +69,52 @@
 #starContainer {
   width: 150px;
   height: 50px;
+  z-index: -1;
 }
 
 .game-img-container {
   display: block;
   width: 360px;
   height: 540px;
-  min-width: 360px; 
+  min-width: 360px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 100%;
   box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
+}
+.seeOutline {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#gamesContained {
+  display: flex;
+  flex-direction: row;
+}
+
+#seeMore {
+  height: 460px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#seeMore > a {
+  text-decoration: none;
+}
+#arrowMore {
+  max-width: 75%;
+  pointer-events: none;
+}
+#moreGames p {
+  color: black;
+}
+
+#arrBtnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

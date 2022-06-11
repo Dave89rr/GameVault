@@ -17,9 +17,16 @@ block content
                 a(href=`/collections/${collection.id}`)
                   h4= collection.name
                 p= collection.description
-                div(id='games')
-                    each game in collection.Games
-                      +gameCard(game)
+                div(id='gamesContained')
+                  div(id='games')
+                      each game in collection.Games
+                        +gameCard(game)
+                  div(id='seeMore')
+                    a(href=`/collections/${collection.id}`)
+                      div(id='arrBtnContainer')
+                        object(data='/../media/404/arrow.svg' id='arrowMore')
+                        div(id='moreGames')
+                          p Full Collection
     a(href='/collections/new')
       button(type='button' id='new-collection') Add a new collection!
     div(class='editForm' id='editDetails')

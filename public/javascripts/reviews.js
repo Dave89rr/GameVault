@@ -100,11 +100,6 @@ try {
 <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
 </form></div></div>
       `;
-
-      /* form(class='hidden' id=`edit-form-review-${review.id}`)
-      label Content
-      input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
-      button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit */
       const ul = document.querySelector('.big-review-container');
       console.log(ul);
       ul.appendChild(indReview);
@@ -116,7 +111,7 @@ try {
         .getElementById(`edit-review-${data.review.id}`)
         .addEventListener('click', editReview);
     } else {
-      alert('Sorry, one review per user');
+      alert('Sorry, one review allowed per game');
     }
   });
 } catch (e) {

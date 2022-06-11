@@ -168,6 +168,7 @@ router.get(
       where: {
         user_id: userId,
       },
+      order: [['name', 'ASC']],
     });
     res.render('vault-view', { collections });
   })
