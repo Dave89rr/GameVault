@@ -5,24 +5,40 @@ body {
   margin: auto;
   position: relative;
 }
+
+@keyframes fadeIn {
+  100% {
+    opacity: 100%;
+  }
+}
+
 #gameOver {
   width: 47%;
   top: 17px;
+  animation: 0.75s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
 }
 
 #eyes {
   width: 59%;
   top: 35px;
+  animation: 1.75s linear 250ms 1 forwards fadeIn;
+  opacity: 0%;
 }
 
 #text {
   width: 54%;
   top: 56px;
+  animation: 0.75s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
 }
+
 #containerMaybe {
   height: 50px;
   top: 30px;
   width: 6%;
+  animation: 1s linear 2250ms 1 forwards fadeIn;
+  opacity: 0%;
 }
 
 #psudoBtn {
