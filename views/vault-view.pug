@@ -7,12 +7,17 @@ block content
     link(rel="stylesheet" href="/stylesheets/form.css")
     div(id='user-info')
         img(src=user.icon id='liveIcon')
-        h1(id='liveName')=user.username
-        h2(id='liveBio') Bio: #{user.bio}
-        button(type='button' id='editProfile') Edit
+        div(id="user-info-text")
+          h1(id='liveName')=user.username
+           span
+            button(type='button' id='editProfile') Edit
+          h2(id='liveBio') Bio: #{user.bio}
     div(id='entries')
         div(id='collections')
-            h3 Collections
+            div(id='title-and-add')
+              h2 My Collections
+              a(href='/collections/new')
+                button(type='button' id='new-collection') Add a new collection!
             each collection in collections
                 a(href=`/collections/${collection.id}`)
                   h4= collection.name
@@ -20,8 +25,6 @@ block content
                 div(id='games')
                     each game in collection.Games
                       +gameCard(game)
-    a(href='/collections/new')
-      button(type='button' id='new-collection') Add a new collection!
     div(class='editForm' id='editDetails')
       form(id='editFormitself')
         img(src=user.icon id='editIconImg')

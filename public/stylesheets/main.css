@@ -19,9 +19,15 @@ html {
   /* align-items: center;
     margin-left: 5%;
     margin-right: 5%; */
-  margin: auto;
-  width: 79%;
-  padding-bottom: 50px;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0px 10px;
+}
+
+#collection-top {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px 10px 10px 70px;
 }
 
 .card {
