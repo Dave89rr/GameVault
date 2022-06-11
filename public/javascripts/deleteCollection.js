@@ -1,4 +1,4 @@
-const deleteBtn = document.querySelector('.deleteCollBtn');
+const buttons = document.querySelectorAll('.deleteCollBtn');
 
 const deleteAction = async (e) => {
   e.preventDefault();
@@ -17,4 +17,6 @@ const deleteAction = async (e) => {
   }
 };
 
-deleteBtn.addEventListener('click', deleteAction);
+buttons.forEach(button => {
+  button.addEventListener('click', deleteAction);
+})

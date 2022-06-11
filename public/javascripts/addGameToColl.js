@@ -24,6 +24,8 @@ document
       const card = document.createElement('div');
       const cardTitle = document.createElement('div');
       card.setAttribute('class', 'card');
+      card.setAttribute('id', `card-${data.game.id}`);
+
       card.innerHTML = `<div class='game-title'>
       <p>${data.game.name}</p>
       </div>
