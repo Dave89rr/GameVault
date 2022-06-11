@@ -21,7 +21,13 @@ html {
     margin-right: 5%; */
   margin: auto;
   width: 79%;
-  padding-bottom: 50px;
+  /* padding: 0px 10px; */
+}
+
+#collection-top {
+  margin: 0 auto;
+  width: 79%;
+  padding: 40px 10px 10px 70px;
 }
 
 .card {
