@@ -36,8 +36,10 @@ block content
             p(id=`reviewContent-${review.id}`)=review.content
             if loggedInUser === review.user_id
               div(class="delete-and-edit")
-                button(class="delete-btn" id=`delete-review-${review.id}`) Delete
-                button(class="edit-btn" id=`edit-review-${review.id}`) Edit
+                div(id=`edit-review-${review.id}` class="edit-btn")
+                  object(data='../media/editIcon.svg' id='svgEditIcon')
+                div(class="delete-btn" id=`delete-review-${review.id}`)
+                  object(data='../media/deleteIcon.svg' id='svgDeleteIcon')
                 form(class='hidden' id=`edit-form-review-${review.id}`)
                   label Content
                   input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)

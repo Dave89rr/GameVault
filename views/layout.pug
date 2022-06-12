@@ -7,19 +7,26 @@ html
         link(href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet")
   body
     nav
-      div(id='logo')
-        a(href='/')
-          img(src='../media/logo.png' id='logo-img')
-      div(id='userInteractions')
-        if locals.authenticated
-          span Welcome 
-            a(href=`/users/${user.id}`) #{user.username}!
-            button(type='submit' id='logoutButton') Logout
-        else
-          span
-            a(href='/users/demo-user') Demo User
-            a(href='/users/login') Login
-            a(href='/users/sign-up') Sign Up
+      div(class='nav-container')
+        div(id='logo')
+          a(href='/')
+            img(src='../media/gameVaultLogo.svg' id='logo-img')
+        div(id='userInteractions')
+          if locals.authenticated
+            div(id='loggedInInteractions') Welcome,
+              a(href=`/users/${user.id}` id='usernameAnchor') #{user.username}!
+              div(id='vaultButton')
+                object(data='/../media/library.svg' id='vaultIcon')
+              div(id='logoutButton')
+                object(data='/../media/logout.svg' id='logoutIcon')
+          else
+            div(id='loggedOutInteractions')
+              div(class='navButton' id='demoUserButton')
+                a(href='/users/demo-user') Demo User
+              div(class='navButton' id='loginButton')
+                a(href='/users/login') Login
+              div(class='navButton' id='signUpButton')
+                a(href='/users/sign-up') Sign Up
     block content
     script(src='/javascripts/logout.js')
     footer created by
