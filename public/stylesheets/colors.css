@@ -7,21 +7,21 @@
   --font-color: black;
 } */
 /* ------- The Beast ------- */
-:root {
+/* :root {
   --bg-color: #001524;
   --primary-color: #0974a9;
   --secondary-color: #02223d;
   --highlights-color: #14647b;
   --font-color: white;
-}
+} */
 /* ------- Dark Skyline ------- */
-/* :root {
+:root {
   --bg-color: #180c39;
   --primary-color: #7200dd;
   --secondary-color: #2a026a;
   --highlights-color: #481a9e;
   --font-color: white;
-} */
+}
 /* ------- Option Stardew 👎 ------- */
 /* :root {
   --bg-color: #151152;
