@@ -1,3 +1,5 @@
+@import url('./colors.css');
+
 html {
   position: relative;
   min-height: 100%;
@@ -16,12 +18,8 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* align-items: center;
-    margin-left: 5%;
-    margin-right: 5%; */
   margin: auto;
   width: 79%;
-  /* padding: 0px 10px; */
 }
 
 #collection-top {
@@ -49,7 +47,8 @@ body {
 }
 
 a {
-  color: #00b7ff;
+  color: var(--font-color);
+  text-decoration: none;
 }
 
 * {
@@ -71,25 +70,18 @@ span,
 body,
 header {
   font-size: 1rem;
-  /* color: black; */
-  background-color: transparent;
   margin: 0;
   padding: 0;
   outline: 0;
   font-weight: normal;
   font-family: 'ABeeZee', sans-serif;
-  color: #27272a;
+  color: var(--font-color);
 }
 
 body {
   margin-top: 54px;
   margin-bottom: 50px;
-  /* max-width: 1440px; */
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* text-align: center; */
-  /* padding-left: 200px;
-  padding-right: 200px; */
+  background-color: var(--bg-color);
 }
 
 h1 {
@@ -104,7 +96,6 @@ h1 {
 }
 
 nav {
-  /* border: 1px solid black; */
   position: fixed;
   top: 0;
   width: 100%;
@@ -113,18 +104,17 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #4a39d3;
-  /* color: white; */
+  background-color: var(--primary-color);
 }
 
 #userInteractions span a {
-  color: white;
+  color: var(--font-color);
   text-decoration: none;
   margin: 10px;
 }
 #userInteractions {
   margin-right: 100px;
-  color: white;
+  color: var(--font-color);
 }
 
 footer {
@@ -136,20 +126,18 @@ footer {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: #f09aff;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
 }
 
 footer span a {
-  color: white;
+  color: var(--font-color);
 }
 
 #banner {
   top: 54px;
   min-width: 100%;
   display: flex;
-  /* background-image: url('../media/banner.png'); */
-  /* background-size: contain; */
   justify-content: center;
 }
 #banner img {
@@ -165,4 +153,8 @@ footer span a {
 #homeTitle {
   padding-top: 30px;
   text-align: center;
+}
+
+#editName {
+  pointer-events: none;
 }

@@ -61,11 +61,6 @@ router.get('/sign-up', csrfProtection, (req, res) => {
   });
 });
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
-
 router.post(
   '/sign-up',
   csrfProtection,

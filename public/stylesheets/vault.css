@@ -1,10 +1,9 @@
+@import url('./colors.css');
 #games {
   display: flex;
   flex-direction: row;
-  /* margin-left: 10.4%; */
   width: 1200px;
   overflow: hidden;
-  float: left;
 }
 
 #editDetails {
@@ -32,7 +31,7 @@
   left: 25%;
   right: 25%;
   border-radius: 9px;
-  background-color: gray;
+  background-color: var(--highlights-color);
 }
 
 .hidden {
@@ -47,7 +46,6 @@
 #collections {
   max-width: 79%;
   margin: auto;
-  /* padding: 20px 10px; */
   display: flex;
   flex-direction: column;
 }
@@ -72,12 +70,12 @@
 #user-info-text {
   padding-left: 50px;
   padding-top: 10px;
-  /* padding-right: 50px; */
 }
 
 #user-info-text h2 {
   padding-top: 7px;
-  color: #52525b;
+  color: var(--font-color);
+  opacity: 75%;
 }
 
 #gameImg {
@@ -141,7 +139,7 @@
   pointer-events: none;
 }
 #moreGames p {
-  color: black;
+  color: var(--font-color);
 }
 
 #arrBtnContainer {
