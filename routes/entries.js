@@ -44,11 +44,13 @@ router.post(
 );
 
 router.delete(
-  '/',
+  '/:id(\\d+)',
   asyncHandler(async (req, res) => {
     const entryId = parseInt(req.params.id, 10);
-    await db.Entry.destroy({ where: { id: entryId } });
-    res.send('it is deleted');
+    console.log('OOOOOOOOOOOOOOOOOOOOOOOO' + entryId)
+    const entry = await db.Entry.findByPk(entryId);
+    await entry.destroy();
+    res.send({message: 'it is deleted'});
   })
 );
 

@@ -6,22 +6,6 @@ const { requireAuth, restoreUser } = require('../auth');
 
 const router = express.Router();
 
-// /collections should display all collections created by all users..it should give a 404
-// router.get(
-//   '/',
-//   requireAuth,
-//   asyncHandler(async (req, res) => {
-//     const userId = res.locals.user.id;
-//     const collections = await db.Collection.findAll({
-//       include: 'Games',
-//       where: {
-//         user_id: userId,
-//       },
-//     });
-//     res.render('vault-view', { collections });
-//   })
-// );
-
 router.get(
   '/new',
   csrfProtection,
@@ -91,6 +75,7 @@ router.get(
       where: {
         id: parseInt(req.params.id, 10),
       },
+      order: [[{ model: db.Game }, 'name', 'ASC']],
     });
 
     const allStatuses = await db.PlayedStatus.findAll();
@@ -111,7 +96,7 @@ router.put(
     const collection = await db.Collection.findByPk(collectionId);
     const { name, description } = req.body;
     await collection.update({ name, description });
-    res.json({message: 'edit successful', collection, name, description });
+    res.json({ message: 'edit successful', collection, name, description });
   })
 );
 

@@ -94,17 +94,21 @@ try {
       indReview.innerHTML = `<div class='user-rated-stars'>
 <p>${data.user.username}<span>rated ${data.review.stars}<span></p></div>
 <div class='review-and-button'><p id='reviewContent-${data.review.id}'>${data.review.content}</p>
-<div class='delete-and-edit'><button class='delete-btn' id='delete-review-${data.review.id}'>Delete</button><button class='edit-btn' id='edit-review-${data.review.id}'>Edit</button>
-<form class='hidden' id='edit-form-review-${data.review.id}'><label>Content</label>
+<div class='delete-and-edit'>
+<div class='edit-btn' id='edit-review-${data.review.id}'>
+<object data="../media/editIcon.svg" id="svgEditIcon"></object>
+</div>
+<div class='delete-btn' id='delete-review-${data.review.id}'>
+<object data="../media/deleteIcon.svg" id="svgDeleteIcon"></object>
+</div>
+<form class='hidden' id='edit-form-review-${data.review.id}'>
+<label>Content</label>
 <input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
 <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
-</form></div></div>
+</form>
+</div>
+</div>
       `;
-
-      /* form(class='hidden' id=`edit-form-review-${review.id}`)
-      label Content
-      input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
-      button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit */
       const ul = document.querySelector('.big-review-container');
       console.log(ul);
       ul.appendChild(indReview);
@@ -116,7 +120,7 @@ try {
         .getElementById(`edit-review-${data.review.id}`)
         .addEventListener('click', editReview);
     } else {
-      alert('Sorry, one review per user');
+      alert('Sorry, one review allowed per game');
     }
   });
 } catch (e) {

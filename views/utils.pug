@@ -16,13 +16,16 @@ mixin gameCard(game)
     a(href=`/games/${game.id}`)
       div(class='home-img' style=`background-image: url(${game.img_url});`)
 
+mixin deleteButton(gameId)
+  input(class='delete-button' type='button' id=`delete-${gameId}` value='Remove from Collection')
 
 mixin collectionGameCard(game)
-  div(class='card')
+  div(class='card' id=`card-${game.id}`)
     .game-title
       p= game.name
     a(href=`/games/${game.id}`)
       div(class='home-img' style=`background-image: url(${game.img_url});`)
+    +deleteButton(game.id)
     select(id=`${game.id}` class='status-update' data-collection=game.Entry.collection_id)
       each status in allStatuses
         +playedStatusDropDown(status, game)
