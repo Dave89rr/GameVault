@@ -61,7 +61,7 @@ router.get(
 
 router.post(
   '/:id(\\d+)/reviews',
-  requireAuth, csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { content, ratings } = req.body;
     const gameId = parseInt(req.params.id, 10);
