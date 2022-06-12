@@ -157,8 +157,9 @@ router.post('/logout', (req, res) => {
 router.get(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
+    let userId;
     try {
-      const userId = res.locals.user.id;
+      userId = res.locals.user.id;
     } catch (e) {
       return res.redirect('/users/login');
     }
@@ -186,7 +187,10 @@ router.put(
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const { bio, icon } = req.body;
+    let { bio, icon } = req.body;
+    if (!icon) {
+      icon = '/media/icons/icon1.png';
+    }
     const userId = req.params.id;
     const user = await db.User.findByPk(userId);
     if (bio) await user.update({ bio });

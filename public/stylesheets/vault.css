@@ -8,6 +8,8 @@
 
 #editDetails {
   display: none;
+  opacity: 100%;
+  z-index: 1;
 }
 
 #editIcon {
@@ -17,13 +19,14 @@
 #editBio {
   min-height: 40px;
   max-height: 367px;
-  max-width: 910px;
-  min-width: 910px;
+  max-width: 343px;
+  min-width: 50px;
+  border-radius: 5px;
 }
 
 .editForm {
   z-index: 1;
-  max-width: 50%;
+  max-width: 20%;
   max-height: 600px;
   margin: auto;
   position: fixed;
@@ -33,7 +36,15 @@
   border-radius: 9px;
   background-color: var(--highlights-color);
 }
-
+#editProfileBlocker {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1080px;
+  opacity: 25%;
+  background-color: white;
+  display: none;
+}
 .hidden {
   display: none;
 }
@@ -143,6 +154,7 @@
 }
 
 #arrBtnContainer {
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
