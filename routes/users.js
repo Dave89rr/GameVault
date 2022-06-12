@@ -157,7 +157,11 @@ router.post('/logout', (req, res) => {
 router.get(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
-    const userId = res.locals.user.id;
+    try {
+      const userId = res.locals.user.id;
+    } catch (e) {
+      return res.redirect('/users/login');
+    }
     const collections = await db.Collection.findAll({
       include: 'Games',
       where: {
