@@ -44,7 +44,7 @@ router.post(
 );
 
 router.delete(
-  '/',
+  '/', requireAuth,
   asyncHandler(async (req, res) => {
     const entryId = parseInt(req.params.id, 10);
     await db.Entry.destroy({ where: { id: entryId } });
@@ -53,7 +53,7 @@ router.delete(
 );
 
 
-router.put('/', asyncHandler(async (req, res) => {
+router.put('/', requireAuth, asyncHandler(async (req, res) => {
   const { played_status_id, game_id, collection_id } = req.body;
   const entry = await db.Entry.findOne({
     where: {
