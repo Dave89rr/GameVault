@@ -89,7 +89,6 @@ h1 {
 }
 
 #logo-img {
-  /* margin-left: 100px; */
   height: 50px;
   width: auto;
   align-items: center;
@@ -107,13 +106,7 @@ nav {
   background-color: var(--primary-color);
 }
 
-/* #userInteractions span a {
-  color: var(--font-color);
-  text-decoration: none;
-  margin: 10px;
-} */
 #userInteractions {
-  /* margin-right: 6%; */
   color: var(--font-color);
 }
 
@@ -157,7 +150,7 @@ footer span a {
 
 #logoutIcon,
 #editName,
-#vaulvaultIcon {
+#vaultIcon {
   pointer-events: none;
 }
 
@@ -166,8 +159,8 @@ footer span a {
   height: 25px;
   width: 25px;
   padding-left: 5px;
-  /* fill: white; */
 }
+#vaultButton:hover,
 #logoutButton:hover {
   cursor: pointer;
 }

@@ -61,6 +61,15 @@ router.get('/sign-up', csrfProtection, (req, res) => {
   });
 });
 
+router.get('/', (req, res) => {
+  try {
+    const userId = res.locals.user.id;
+    res.redirect(`/users/${userId}`);
+  } catch (e) {
+    res.redirect('/users/login');
+  }
+});
+
 router.post(
   '/sign-up',
   csrfProtection,
