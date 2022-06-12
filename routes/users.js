@@ -167,19 +167,24 @@ router.get(
   '/:id(\\d+)',
   asyncHandler(async (req, res) => {
     let userId;
+    const urlId = req.params.id;
     try {
       userId = res.locals.user.id;
     } catch (e) {
       return res.redirect('/users/login');
     }
-    const collections = await db.Collection.findAll({
-      include: 'Games',
-      where: {
-        user_id: userId,
-      },
-      order: [['name', 'ASC']],
-    });
-    res.render('vault-view', { collections });
+    if (userId == urlId) {
+      const collections = await db.Collection.findAll({
+        include: 'Games',
+        where: {
+          user_id: userId,
+        },
+        order: [['name', 'ASC']],
+      });
+      res.render('vault-view', { collections });
+    } else {
+      res.render('404');
+    }
   })
 );
 

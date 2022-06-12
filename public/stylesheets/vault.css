@@ -45,6 +45,19 @@
   background-color: white;
   display: none;
 }
+#editProfile {
+  cursor: pointer;
+}
+#editProfileSvg {
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+}
+#editFormButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
 .hidden {
   display: none;
 }

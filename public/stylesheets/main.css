@@ -111,6 +111,7 @@ nav {
 }
 
 footer {
+  z-index: -1;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -153,6 +154,10 @@ footer span a {
 #vaultIcon {
   pointer-events: none;
 }
+#editName {
+  background-color: gray;
+  color: lightgray;
+}
 
 #logoutIcon,
 #vaultIcon {
@@ -188,4 +193,7 @@ footer span a {
   margin: auto;
   align-items: center;
   justify-content: space-between;
+}
+input {
+  border-radius: 3px;
 }

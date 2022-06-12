@@ -14,7 +14,7 @@ block content
             img(src='/media/empty_stars.png')
           div(id='filledStars' style=`width:${starWidth}`)
             img(src='/media/filled_stars.png')
-        h2 #{average} 
+        h2(id='averageStars') #{average} 
         span #{numReviews} Review(s)
       p= game.synopsis
       if loggedInUser
