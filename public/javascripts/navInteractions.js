@@ -1,4 +1,5 @@
 const logoutButton = document.getElementById('logoutButton');
+const vaultButton = document.getElementById('vaultButton');
 
 if (logoutButton) {
   logoutButton.addEventListener('click', async (e) => {
@@ -12,5 +13,11 @@ if (logoutButton) {
       },
     });
     window.location.href = '/';
+  });
+}
+
+if (vaultButton) {
+  vaultButton.addEventListener('click', () => {
+    window.location.href = '/users';
   });
 }

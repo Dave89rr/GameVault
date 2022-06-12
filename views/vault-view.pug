@@ -9,9 +9,9 @@ block content
         img(src=user.icon id='liveIcon')
         div(id="user-info-text")
           h1(id='liveName')=user.username
-           span
-            button(type='button' id='editProfile') Edit
           h2(id='liveBio') Bio: #{user.bio}
+          div(id='editProfile')
+            object(data='/../media/editIcon.svg' id='editProfileSvg')
     div(id='entries')
         div(id='collections')
             div(id='title-and-add')
@@ -29,18 +29,22 @@ block content
                   div(id='seeMore')
                     a(href=`/collections/${collection.id}`)
                       div(id='arrBtnContainer')
-                        object(data='/../media/404/arrow.svg' id='arrowMore')
+                        object(data='/../media/purpArrow.svg' id='arrowMore')
                         div(id='moreGames')
                           p Full Collection
+    div(id='editProfileBlocker')
     div(class='editForm' id='editDetails')
       form(id='editFormitself')
-        img(src=user.icon id='editIconImg')
-        label(for='editName') Name:
-        input(type='text' id='editName' value=user.username disabled)
+        //- Div is missing ID needs to be flex + row
+        div
+          img(src=user.icon id='editIconImg')
+          label(for='editName') Name:
+          input(type='text' id='editName' value=user.username disabled)
         label(for='editBio') Bio:
         textarea(id='editBio' rows='5' cols='5')= user.bio
-        input(type='button' id='cancelChanges' value='Cancel')
-        input(type='button' id='saveChanges' value='Save')
+        div(id='editFormButtonsContainer')
+          input(type='button' id='saveChanges' value='Save')
+          input(type='button' id='cancelChanges' value='Cancel')
     div(class='editForm' id='editIcon')
       form()
         fieldset(id='iconSelection')

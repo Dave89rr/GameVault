@@ -61,6 +61,15 @@ router.get('/sign-up', csrfProtection, (req, res) => {
   });
 });
 
+router.get('/', (req, res) => {
+  try {
+    const userId = res.locals.user.id;
+    res.redirect(`/users/${userId}`);
+  } catch (e) {
+    res.redirect('/users/login');
+  }
+});
+
 router.post(
   '/sign-up',
   csrfProtection,
@@ -157,15 +166,25 @@ router.post('/logout', (req, res) => {
 router.get(
   '/:id(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
-    const userId = res.locals.user.id;
-    const collections = await db.Collection.findAll({
-      include: 'Games',
-      where: {
-        user_id: userId,
-      },
-      order: [['name', 'ASC']],
-    });
-    res.render('vault-view', { collections });
+    let userId;
+    const urlId = req.params.id;
+    try {
+      userId = res.locals.user.id;
+    } catch (e) {
+      return res.redirect('/users/login');
+    }
+    if (userId == urlId) {
+      const collections = await db.Collection.findAll({
+        include: 'Games',
+        where: {
+          user_id: userId,
+        },
+        order: [['name', 'ASC']],
+      });
+      res.render('vault-view', { collections });
+    } else {
+      res.render('404');
+    }
   })
 );
 
@@ -182,7 +201,10 @@ router.put(
   '/:id(\\d+)',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const { bio, icon } = req.body;
+    let { bio, icon } = req.body;
+    if (!icon) {
+      icon = '/media/icons/icon1.png';
+    }
     const userId = req.params.id;
     const user = await db.User.findByPk(userId);
     if (bio) await user.update({ bio });
