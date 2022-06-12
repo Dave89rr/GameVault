@@ -17,7 +17,6 @@ router.get(
       collection,
       csrfToken: req.csrfToken(),
     });
-    //   res.send("It works! It's alive");
   })
 );
 
@@ -90,7 +89,7 @@ router.get(
 );
 
 router.put(
-  '/:id(\\d+)',
+  '/:id(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
     const collectionId = parseInt(req.params.id, 10);
     const collection = await db.Collection.findByPk(collectionId);

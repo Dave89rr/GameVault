@@ -140,6 +140,7 @@ footer span a {
   display: flex;
   justify-content: center;
 }
+
 #banner img {
   width: 100%;
   height: 100%;
@@ -168,6 +169,7 @@ footer span a {
   padding-left: 5px;
   /* fill: white; */
 }
+
 #logoutButton:hover {
   cursor: pointer;
 }
@@ -195,4 +197,16 @@ footer span a {
   margin: auto;
   align-items: center;
   justify-content: space-between;
+}
+
+button,
+input[type="button"] {
+  border-radius: 2em;
+  background-color: white;
+  border-color: white;
+}
+
+button,
+input[type="button"]:hover {
+  cursor: pointer;
 }

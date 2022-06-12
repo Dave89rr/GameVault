@@ -155,7 +155,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get(
-  '/:id(\\d+)',
+  '/:id(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
     const userId = res.locals.user.id;
     const collections = await db.Collection.findAll({

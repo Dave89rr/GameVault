@@ -20,6 +20,7 @@ form {
 .userIconSel {
   display: none;
 }
+
 */ label img {
   max-width: 100px;
   max-height: 100px;
@@ -31,4 +32,10 @@ ul {
 
 form img {
   max-width: 100px;
+  max-height: 100px;
+  padding: 10px;
+}
+
+fieldset img:hover {
+  background-color: blue;
 }
