@@ -1,5 +1,4 @@
-const reviewBlocker = document.getElementById('edit-review-blocker')
-const editReviewDiv = document.getElementById('edit-review-form-container')
+const editReviewDiv = document.getElementById('edit-review-form-container');
 // ------------------- Delete a Review ------------------- //
 
 const deleteBtns = document.querySelectorAll('.delete-btn');
@@ -28,11 +27,16 @@ for (let i = 0; i < deleteBtns.length; i++) {
 }
 
 // ------------------- Edit a Review ------------------- //
+
 const editBtns = document.querySelectorAll('.edit-btn');
 
 const editReview = (e) => {
   e.stopPropagation();
+  document.body.style.overflow = 'clip';
   const reviewId = e.target.id.split('-')[2];
+  const reviewBlocker = document.getElementById(
+    `edit-review-blocker-${reviewId}`
+  );
   const editReview = document.getElementById(`edit-form-review-${reviewId}`);
 
   if (editReview.classList.contains('hidden')) {
@@ -41,13 +45,13 @@ const editReview = (e) => {
     editReview.classList.add('hidden');
   }
 
-  reviewBlocker.style.display = 'block'
-  editReviewDiv.style.display = 'block'
+  reviewBlocker.style.display = 'block';
+  editReviewDiv.style.display = 'block';
 
   const submitBtn = document.getElementById(`edit-submit-${reviewId}`);
   submitBtn.addEventListener('click', async (submitEvent) => {
     submitEvent.preventDefault();
-    reviewBlocker.style.display = 'none'
+    reviewBlocker.style.display = 'none';
     const content = document.getElementById(`${reviewId}-edit-content`).value;
     const url = window.location.pathname;
     const gameId = url.split('/')[2];
@@ -68,6 +72,7 @@ const editReview = (e) => {
       );
       reviewContainer.innerText = `${data.review.content}`;
       editReview.classList.add('hidden');
+      document.body.style.overflow = 'auto';
     }
   });
 };

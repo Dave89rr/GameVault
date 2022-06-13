@@ -40,7 +40,7 @@ block content
                   object(data='../media/editIcon.svg' id='svgEditIcon')
                 div(class="delete-btn" id=`delete-review-${review.id}`)
                   object(data='../media/deleteIcon.svg' id='svgDeleteIcon')
-              div(id='edit-review-blocker')
+              div(class='edit-review-blocker' id=`edit-review-blocker-${review.id}`)
               div(id='edit-review-form-container')
                 form(class='hidden edit-form' id=`edit-form-review-${review.id}`)
                   div(id='label-container')

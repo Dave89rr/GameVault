@@ -139,12 +139,12 @@
   z-index: -1;
 }
 
-#content{
+#content {
   border-radius: 5px;
   height: 40px;
 }
 
-#edit-review-blocker {
+.edit-review-blocker {
   position: fixed;
   top: 0;
   left: 0;
