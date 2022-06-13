@@ -33,8 +33,8 @@ block content
             each game in collection.Games
               +collectionGameCard(game)
 
-    script(src='/javascripts/addGameToColl.js')
-    script(src='/javascripts/playedStatus.js')
+    script(src='/javascripts/addGameToColl.js' type='module')
+    script(src='/javascripts/playedStatus.js' type='module')
     script(src='/javascripts/deleteCollection.js')
     script(src='/javascripts/editCollection.js')
-    script(src='/javascripts/deleteGameFromColl.js')
+    script(src='/javascripts/deleteGameFromColl.js' type='module')
