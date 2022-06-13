@@ -12,7 +12,7 @@ const selectOnlyThis = (e) => {
   let id = e.target.id;
   e.target.checked = true;
   let imgLbl = document.getElementById('img' + id);
-  imgLbl.style.backgroundColor = 'blue';
+  imgLbl.style.backgroundColor = 'rebeccapurple';
 };
 
 checkboxes.forEach((checkbox) => {

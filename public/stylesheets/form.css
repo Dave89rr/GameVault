@@ -37,16 +37,12 @@ form img {
 }
 fieldset {
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 fieldset img:hover {
-  background-color: blue;
-}
-
-.userIconSel:checked + fieldset img {
-  background-color: red;
-  /* border: 2px solid red; */
-  /* font-weight: bold; */
+  background-color: rebeccapurple;
 }
 
 button {
