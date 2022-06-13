@@ -7,9 +7,12 @@ block content
     link(rel='stylesheet' href='/stylesheets/vault.css')
     div.collection-container
       div#collection-top
-        h1= collection.name
-        h2= collection.description
-        button(type='button' id='editCollection') Edit
+        div(id='title-descrip-btns')
+          h1= collection.name
+          h2= collection.description
+          div(id='collInfoBtns')
+            button(type='button' id='editCollection') Edit
+            button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
 
         form(class='hidden' id='edit-coll')
           label(for='name') Name
@@ -19,7 +22,6 @@ block content
           button(id='submit-edit' type='submit') Submit Edit
           button(id='cancel-edit' type='button') Cancel Edit
 
-        button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
         div(id='addGamesSelect')
           form(action='' method='get')
             select(name='game_id' id='selectValue')

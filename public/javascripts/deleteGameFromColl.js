@@ -1,4 +1,4 @@
-const deleteButtons = document.querySelectorAll('.delete-button');
+const deleteButtons = document.querySelectorAll('.delGameBtnDiv');
 
 for (i = 0; i < deleteButtons.length; i++) {
   const deleteButton = deleteButtons[i];
