@@ -32,6 +32,7 @@ document
       <a href='/games/${data.game.id}'>
       <div class='home-img' style='background-image: url(${data.game.img_url});'></div>
       </a>
+      <input type="button" class="delete-button" id="delete-${data.game.id}" value="Remove from Collection">
   <select class="status-update" id="${data.game.id}" data-collection="${collectionID}">
     <option value="1">
       Want to Play
@@ -66,6 +67,29 @@ document
             }),
           });
         });
+
+      const deleteButtons = document.querySelectorAll('.delete-button');
+
+      for (i = 0; i < deleteButtons.length; i++) {
+        const deleteBttn = deleteButtons[i];
+
+        deleteBttn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const gameId = e.target.id.split('-')[1];
+
+          const res = await fetch(`/entries/${gameId}`, {
+            method: 'DELETE',
+          });
+
+          const data = await res.json();
+          if (data.message === 'it is deleted') {
+            const card = document.getElementById(`card-${gameId}`);
+            if (card) {
+              card.remove();
+            }
+          }
+        });
+      }
     } else {
       alert('Game is already in your collection');
     }

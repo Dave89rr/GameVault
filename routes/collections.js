@@ -106,9 +106,10 @@ router.delete(
     const collectionId = req.params.id;
     const userId = res.locals.user.id;
     const collection = await db.Collection.findByPk(collectionId);
-
-    await collection.destroy();
-    res.send({ message: 'it is deleted', userId });
+    if (collection) {
+      await collection.destroy();
+      res.send({ message: 'it is deleted', userId });
+    }
   })
 );
 
