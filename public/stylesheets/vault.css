@@ -36,7 +36,7 @@
   border-radius: 9px;
   background-color: var(--highlights-color);
 }
-#editProfileBlocker {
+#editBlocker {
   position: absolute;
   top: 0;
   width: 100%;
@@ -76,7 +76,6 @@
 
 #collections h2 {
   font-size: 1.5rem;
-  padding-bottom: 30px;
 }
 
 #user-info {
@@ -178,4 +177,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#editCollSpacer {
+  height: 202px;
+  padding: 20px;
+}
+
+#editFormitself {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 220px;
+}
+
+#editFormitself > input {
+  width: 100%;
 }

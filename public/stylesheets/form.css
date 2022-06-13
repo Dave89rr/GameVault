@@ -35,9 +35,14 @@ form img {
   max-height: 100px;
   padding: 10px;
 }
+fieldset {
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
 
 fieldset img:hover {
-  background-color: blue;
+  background-color: rebeccapurple;
 }
 
 button {
@@ -45,11 +50,11 @@ button {
   border: none;
   border-radius: 15px;
   margin-top: 10px;
-  background-color: #FFE9F8;
+  background-color: #ffe9f8;
 }
 
 button:hover {
-  background-color: #CF9FDB;
+  background-color: #cf9fdb;
 }
 
 #create-account {

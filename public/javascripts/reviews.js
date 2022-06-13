@@ -1,3 +1,4 @@
+const editReviewDiv = document.getElementById('edit-review-form-container');
 // ------------------- Delete a Review ------------------- //
 
 const deleteBtns = document.querySelectorAll('.delete-btn');
@@ -26,11 +27,16 @@ for (let i = 0; i < deleteBtns.length; i++) {
 }
 
 // ------------------- Edit a Review ------------------- //
+
 const editBtns = document.querySelectorAll('.edit-btn');
 
 const editReview = (e) => {
   e.stopPropagation();
+  document.body.style.overflow = 'clip';
   const reviewId = e.target.id.split('-')[2];
+  const reviewBlocker = document.getElementById(
+    `edit-review-blocker-${reviewId}`
+  );
   const editReview = document.getElementById(`edit-form-review-${reviewId}`);
 
   if (editReview.classList.contains('hidden')) {
@@ -39,9 +45,13 @@ const editReview = (e) => {
     editReview.classList.add('hidden');
   }
 
+  reviewBlocker.style.display = 'block';
+  editReviewDiv.style.display = 'block';
+
   const submitBtn = document.getElementById(`edit-submit-${reviewId}`);
   submitBtn.addEventListener('click', async (submitEvent) => {
     submitEvent.preventDefault();
+    reviewBlocker.style.display = 'none';
     const content = document.getElementById(`${reviewId}-edit-content`).value;
     const url = window.location.pathname;
     const gameId = url.split('/')[2];
@@ -62,6 +72,7 @@ const editReview = (e) => {
       );
       reviewContainer.innerText = `${data.review.content}`;
       editReview.classList.add('hidden');
+      document.body.style.overflow = 'auto';
     }
   });
 };
@@ -100,11 +111,18 @@ try {
 <div class='delete-btn' id='delete-review-${data.review.id}'>
 <object data="../media/deleteIcon.svg" id="svgDeleteIcon"></object>
 </div>
+<div id='edit-review-blocker'></div>
+<div id='edit-review-form-container'>
 <form class='hidden' id='edit-form-review-${data.review.id}'>
-<label>Content</label>
-<input type='text' name='content' value='${data.review.content}' id='${data.review.id}-edit-content'/>
+<div id='label-container'><label>Content</label></div>
+<div id='review-content-container'>
+<textarea type='text' name='content' id='${data.review.id}-edit-content'/>${data.review.content}</textarea>
+</div>
+<div id='edit-review-button-container'>
 <button type='submit' name='review-submit' id='edit-submit-${data.review.id}'>Submit</button>
+</div>
 </form>
+</div>
 </div>
 </div>
       `;
