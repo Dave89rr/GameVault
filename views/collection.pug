@@ -13,21 +13,27 @@ block content
           div(id='collInfoBtns')
             button(type='button' id='editCollection') Edit
             button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
-
-        form(class='hidden' id='edit-coll')
-          label(for='name') Name
-          input(type='text' name='name' value=collection.name id='edit-name')
-          label Description
-          textarea(name='description' id='edit-desc' value=collection.description)= collection.description
-          button(id='submit-edit' type='submit') Submit Edit
-          button(id='cancel-edit' type='button') Cancel Edit
-
         div(id='addGamesSelect')
           form(action='' method='get')
             select(name='game_id' id='selectValue')
               each game in allGames
                 option(value=game.id)= game.name
             input(type='button' id='addGameToColl' value='add game')
+
+      div(id='editBlocker')
+      div(class='editForm' id='editDetails')
+        div(id='editCollSpacer')
+          form(id='editFormitself')
+            div(display='flex' flex-direction='column')
+              label(for='name') Name:
+              input(type='text' name='name' value=collection.name id='edit-name')
+              br
+              label Description
+              textarea(name='description' id='edit-desc' value=collection.description)= collection.description
+              br
+              button(id='submit-edit' type='submit') Submit Edit
+              button(id='cancel-edit' type='button') Cancel Edit
+
       div(class='img-box')
         if collection.Games
             each game in collection.Games
