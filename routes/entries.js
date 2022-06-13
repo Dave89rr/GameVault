@@ -46,8 +46,10 @@ router.delete(
   asyncHandler(async (req, res) => {
     const entryId = parseInt(req.params.id, 10);
     const entry = await db.Entry.findByPk(entryId);
-    await entry.destroy();
-    res.send({ message: 'it is deleted' });
+    if (entry) {
+      await entry.destroy();
+      res.send({ message: 'it is deleted' });
+    }
   })
 );
 
