@@ -164,8 +164,13 @@ footer span a {
 #vaultIcon {
   height: 25px;
   width: 25px;
-  padding-left: 5px;
+  /* padding-left: 5px; */
 }
+#logoutButton {
+  margin-left: 2px;
+}
+
+#vaultButton:hover,
 #logoutButton:hover {
   cursor: pointer;
 }
@@ -196,13 +201,20 @@ footer span a {
 }
 
 button,
-input[type="button"] {
+input[type='button'] {
   border-radius: 2em;
   background-color: white;
   border-color: white;
 }
 
 button,
-input[type="button"]:hover {
+input[type='button']:hover {
   cursor: pointer;
+}
+
+#separator {
+  border: 1px solid white;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
