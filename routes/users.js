@@ -164,7 +164,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get(
-  '/:id(\\d+)',
+  '/:id(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
     let userId;
     const urlId = req.params.id;

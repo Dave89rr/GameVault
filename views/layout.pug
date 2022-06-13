@@ -16,7 +16,8 @@ html
             div(id='loggedInInteractions') Welcome,
               a(href=`/users/${user.id}` id='usernameAnchor') #{user.username}!
               div(id='vaultButton')
-                object(data='/../media/library.svg' id='vaultIcon')
+                object(data='/../media/profileIcon.svg' id='vaultIcon')
+              div(id='separator')
               div(id='logoutButton')
                 object(data='/../media/logout.svg' id='logoutIcon')
           else

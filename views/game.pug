@@ -7,7 +7,7 @@ block content
     div(class="game-img-container" style=`background-image: url(${game.img_url});`)
     div.game-info
       h1= game.name
-      h2= game.publisher
+      h2(id='publisherH2')= game.publisher
       div.reviews-container
         div(id='starContainer')
           div(id='emptyStars')

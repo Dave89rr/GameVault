@@ -75,7 +75,6 @@ try {
   document.getElementById('postReview').addEventListener('click', async (e) => {
     e.preventDefault();
     const url = window.location.pathname;
-    const gameId = url.split('/')[2];
     const content = document.getElementById('content').value;
     const textarea = document.getElementById('content');
     const ratings = document.getElementById('ratings').value;
@@ -110,7 +109,6 @@ try {
 </div>
       `;
       const ul = document.querySelector('.big-review-container');
-      console.log(ul);
       ul.appendChild(indReview);
       textarea.value = '';
       document
