@@ -25,7 +25,6 @@ editBttn.addEventListener('click', (e) => {
 
     const url = window.location.pathname;
     const collectionId = url.split('/')[2];
-    console.log(collectionId);
 
     const fetchUrl = `/collections/${collectionId}`;
     const res = await fetch(fetchUrl, {

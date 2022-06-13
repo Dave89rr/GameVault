@@ -109,7 +109,6 @@ try {
 </div>
       `;
       const ul = document.querySelector('.big-review-container');
-      console.log(ul);
       ul.appendChild(indReview);
       textarea.value = '';
       document

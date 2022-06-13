@@ -6,24 +6,22 @@ const { requireAuth } = require('../auth');
 
 const router = express.Router();
 
-
 //come back to this :)
 router.post(
   '/',
-  requireAuth, asyncHandler(async (req, res) => {
+  requireAuth,
+  asyncHandler(async (req, res) => {
     const { game_id, collection_id } = req.body;
 
     const check = await db.Entry.findOne({
       where: {
-
         game_id: game_id,
         played_status_id: 1,
         collection_id: collection_id,
-      }
+      },
     });
 
     if (!check) {
-
       const entry = await db.Entry.create({
         game_id: game_id,
         played_status_id: 1,
@@ -34,9 +32,8 @@ router.post(
 
       res.send({ message: 'db updated', game });
     } else {
-      res.send({ message: 'Game already present' })
+      res.send({ message: 'Game already present' });
     }
-
 
     // res.render('collection', { collection });
     // res.send('hi');
@@ -44,27 +41,30 @@ router.post(
 );
 
 router.delete(
-  '/:id(\\d+)', requireAuth,
+  '/:id(\\d+)',
+  requireAuth,
   asyncHandler(async (req, res) => {
     const entryId = parseInt(req.params.id, 10);
-    console.log('OOOOOOOOOOOOOOOOOOOOOOOO' + entryId)
     const entry = await db.Entry.findByPk(entryId);
     await entry.destroy();
     res.send({ message: 'it is deleted' });
   })
 );
 
-
-router.put('/', requireAuth, asyncHandler(async (req, res) => {
-  const { played_status_id, game_id, collection_id } = req.body;
-  const entry = await db.Entry.findOne({
-    where: {
-      game_id: game_id,
-      collection_id: collection_id
-    }
-  });
-  await entry.update({ played_status_id });
-  res.json({ message: 'Success!', entry });
-}))
+router.put(
+  '/',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { played_status_id, game_id, collection_id } = req.body;
+    const entry = await db.Entry.findOne({
+      where: {
+        game_id: game_id,
+        collection_id: collection_id,
+      },
+    });
+    await entry.update({ played_status_id });
+    res.json({ message: 'Success!', entry });
+  })
+);
 
 module.exports = router;
