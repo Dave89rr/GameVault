@@ -84,7 +84,9 @@ document
           const data = await res.json();
           if (data.message === 'it is deleted') {
             const card = document.getElementById(`card-${gameId}`);
-            card.remove();
+            if (card) {
+              card.remove();
+            }
           }
         });
       }
