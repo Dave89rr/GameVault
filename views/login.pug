@@ -4,7 +4,7 @@ include utils.pug
 block content
   link(rel='stylesheet' href="/stylesheets/form.css")
   +errors(errors)
-  div(class='some-form')
+  div(class='some-form' id="sign-up-form")
     form(action='/users/login' method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
       label(for='username') Username
@@ -12,4 +12,4 @@ block content
       label(for='password') Password
       input(type='password' id='password' name='password')
       button(type="submit") Log In
-    a(href='/users/sign-up') Create account
+      a(href='/users/sign-up' id="create-account") Create account
