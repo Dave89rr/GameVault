@@ -24,7 +24,7 @@ module.exports = {
           synopsis:
             'Human: Fall Flat is a puzzle-platform game developed by Tomas Sakalauskas and published by Curve Digital',
           img_url:
-            'https://505games.com/wp-content/uploads/2021/02/hff752x430-1.jpg',
+            'https://static-cdn.jtvnw.net/ttv-boxart/492504_IGDB-272x380.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -58,7 +58,7 @@ module.exports = {
           synopsis:
             'The latest instalment in the award-winning series, Sniper Elite 5 offers unparalleled sniping, tactical third-person combat and an enhanced kill cam.',
           img_url:
-            'https://cdn.akamai.steamstatic.com/steam/apps/1029690/capsule_616x353.jpg?t=1654528999',
+            'https://bleedingcool.com/wp-content/uploads/2022/01/Sniper-Elite-5-Final-Cover-Art-900x900.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -215,7 +215,7 @@ module.exports = {
           synopsis:
             'Children of Morta is an action role-playing video game with roguelike elements. Developed by studio Dead Mage, it follows the story of the Bergson family, custodians of Mount Morta, who must defend it from an evil called the Corruption',
           img_url:
-            'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Children_of_Morta.jpg/220px-Children_of_Morta.jpg',
+            'https://techraptor.net/sites/default/files/styles/image_header/public/imports/2019/06/children-of-morta-demo-available-for-free-on-steam-now.jpg',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
