@@ -269,3 +269,8 @@ option {
 #addGamesSelect {
   margin-right: 55px;
 }
+#description,
+#edit-desc,
+#edit-name {
+  border-radius: 5px;
+}

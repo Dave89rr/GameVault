@@ -14,7 +14,7 @@ block content
             img(src='/media/empty_stars.png')
           div(id='filledStars' style=`width:${starWidth}`)
             img(src='/media/filled_stars.png')
-        h2(id='averageStars') #{average} 
+        h2(id='averageStars') #{average}
         span #{numReviews} Review(s)
       p= game.synopsis
       if loggedInUser
@@ -40,10 +40,15 @@ block content
                   object(data='../media/editIcon.svg' id='svgEditIcon')
                 div(class="delete-btn" id=`delete-review-${review.id}`)
                   object(data='../media/deleteIcon.svg' id='svgDeleteIcon')
-                form(class='hidden' id=`edit-form-review-${review.id}`)
-                  label Content
-                  input(type='text' name='content' value=review.content id=`${review.id}-edit-content`)
-                  button(type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit
+              div(id='edit-review-blocker')
+              div(id='edit-review-form-container')
+                form(class='hidden edit-form' id=`edit-form-review-${review.id}`)
+                  div(id='label-container')
+                    label(id='content-label') Content
+                  div(id='review-content-container')
+                    textarea(type='text' name='content' id=`${review.id}-edit-content` class='edit-review')=review.content
+                  div(id='edit-review-button-container')
+                    button(class='submit-button' type='submit' name='review-submit' id=`edit-submit-${review.id}`) Submit
   if loggedInUser
     div.ratings-container
       form(action=`` method="get")
