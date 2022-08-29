@@ -6,7 +6,7 @@ const body = document.body;
 
 // ---------- Edit Button ---------- //
 document.getElementById('editProfile').addEventListener('click', () => {
-  editProfileDiv.style.display = 'block';
+  editProfileDiv.style.display = 'flex';
   blocker.style.display = 'block';
   body.style.overflow = 'clip';
 });
@@ -77,5 +77,5 @@ document
     liveIcon.src = `${icon}`;
     editIcon.src = `${icon}`;
     editIconDiv.style.display = 'none';
-    editProfileDiv.style.display = 'block';
+    editProfileDiv.style.display = 'flex';
   });
