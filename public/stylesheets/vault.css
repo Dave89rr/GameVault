@@ -199,7 +199,31 @@
 #editFormitself > input {
   width: 100%;
 }
+#nameInput {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
 
 #editName {
-  width: 60%;
+  width: 70%;
+}
+
+#editIconImg {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+#editIconImg:hover {
+  background-color: rgb(255, 255, 255, 20%);
+}
+#topHalf {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+}
+
+.checkBoxLabel {
+  cursor: pointer;
 }

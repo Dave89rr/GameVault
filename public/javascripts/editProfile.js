@@ -77,5 +77,5 @@ document
     liveIcon.src = `${icon}`;
     editIcon.src = `${icon}`;
     editIconDiv.style.display = 'none';
-    editProfileDiv.style.display = 'block';
+    editProfileDiv.style.display = 'flex';
   });
