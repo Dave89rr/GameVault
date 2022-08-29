@@ -6,30 +6,41 @@ block content
     link(rel="stylesheet" href="/stylesheets/main.css")
     link(rel='stylesheet' href='/stylesheets/vault.css')
     div.collection-container
-      h1= collection.name
-      h2= collection.description
-      button(type='button' id='editCollection') Edit
+      div#collection-top
+        div(id='title-descrip-btns')
+          h1= collection.name
+          h2= collection.description
+          div(id='collInfoBtns')
+            button(type='button' id='editCollection') Edit
+            button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
+        div(id='addGamesSelect')
+          form(action='' method='get')
+            select(name='game_id' id='selectValue')
+              each game in allGames
+                option(value=game.id)= game.name
+            input(type='button' id='addGameToColl' value='add game')
 
-      form(class='hidden' id='edit-coll')
-        label(for='name') Name
-        input(type='text' name='name' value=collection.name id='edit-name')
-        label Description
-        textarea(name='description' id='edit-desc' value=collection.description)= collection.description
-        button(id='submit-edit' type='submit') Submit Edit
-        button(id='cancel-edit' type='button') Cancel Edit
+      div(id='editBlocker')
+      div(class='editForm' id='editDetails')
+        div(id='editCollSpacer')
+          form(id='editFormitself')
+            div(display='flex' flex-direction='column')
+              label(for='name') Name:
+              input(type='text' name='name' value=collection.name id='edit-name')
+              br
+              label Description
+              textarea(name='description' id='edit-desc' value=collection.description)= collection.description
+              br
+              button(id='submit-edit' type='submit') Submit Edit
+              button(id='cancel-edit' type='button') Cancel Edit
 
-      button(class='deleteCollBtn' name='deleteCollBtn' id=`delete-collection-${collection.id}`) Delete Collection
       div(class='img-box')
-          if collection.Games
-              each game in collection.Games
-                +collectionGameCard(game)
-    div(id='addGamesSelect')
-      form(action='' method='get')
-        select(name='game_id' id='selectValue')
-          each game in allGames
-            option(value=game.id)= game.name
-        input(type='button' id='addGameToColl' value='add game')
-    script(src='/javascripts/addGameToColl.js')
-    script(src='/javascripts/playedStatus.js')
+        if collection.Games
+            each game in collection.Games
+              +collectionGameCard(game)
+
+    script(src='/javascripts/addGameToColl.js' type='module')
+    script(src='/javascripts/playedStatus.js' type='module')
     script(src='/javascripts/deleteCollection.js')
     script(src='/javascripts/editCollection.js')
+    script(src='/javascripts/deleteGameFromColl.js' type='module')

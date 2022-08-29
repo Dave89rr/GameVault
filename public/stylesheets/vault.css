@@ -1,14 +1,15 @@
+@import url('./colors.css');
 #games {
   display: flex;
   flex-direction: row;
-  margin-left: 10.4%;
   width: 1200px;
   overflow: hidden;
-  float: left;
 }
 
 #editDetails {
   display: none;
+  opacity: 100%;
+  z-index: 1;
 }
 
 #editIcon {
@@ -18,13 +19,14 @@
 #editBio {
   min-height: 40px;
   max-height: 367px;
-  max-width: 910px;
-  min-width: 910px;
+  max-width: 343px;
+  min-width: 50px;
+  border-radius: 5px;
 }
 
 .editForm {
   z-index: 1;
-  max-width: 50%;
+  max-width: 20%;
   max-height: 600px;
   margin: auto;
   position: fixed;
@@ -32,9 +34,30 @@
   left: 25%;
   right: 25%;
   border-radius: 9px;
-  background-color: gray;
+  background-color: var(--highlights-color);
 }
-
+#editBlocker {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1080px;
+  opacity: 25%;
+  background-color: white;
+  display: none;
+}
+#editProfile {
+  cursor: pointer;
+}
+#editProfileSvg {
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+}
+#editFormButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
 .hidden {
   display: none;
 }
@@ -44,8 +67,38 @@
   max-height: 100px;
 }
 
+#collections {
+  max-width: 79%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#collections h2 {
+  font-size: 1.5rem;
+}
+
 #user-info {
-  margin-left: 10%;
+  max-width: 79%;
+  margin: auto;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#user-info img {
+  border-radius: 50%;
+}
+
+#user-info-text {
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+#user-info-text h2 {
+  padding-top: 7px;
+  color: var(--font-color);
+  opacity: 75%;
 }
 
 #gameImg {
@@ -109,12 +162,35 @@
   pointer-events: none;
 }
 #moreGames p {
-  color: black;
+  color: var(--font-color);
 }
 
 #arrBtnContainer {
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#title-and-add {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#editCollSpacer {
+  height: 202px;
+  padding: 20px;
+}
+
+#editFormitself {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 220px;
+}
+
+#editFormitself > input {
+  width: 100%;
 }

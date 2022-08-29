@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
 router.get(
-  '/:id(\\d+)',
+  '/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
     //individual game page
     const gameId = req.params.id;
@@ -54,6 +54,7 @@ router.get(
       starWidth,
       loggedInUser: loggedInUser,
       userCollections: userCollections,
+      csrfToken: req.csrfToken()
     });
   })
 );
@@ -88,7 +89,7 @@ router.post(
 );
 
 router.put(
-  '/:id(\\d+)/reviews/:reviewId(\\d+)',
+  '/:id(\\d+)/reviews/:reviewId(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
     const reviewId = req.params.reviewId;
     const review = await db.Review.findByPk(reviewId);
@@ -102,7 +103,7 @@ router.put(
 );
 
 router.delete(
-  '/:id(\\d+)/reviews/:reviewId(\\d+)',
+  '/:id(\\d+)/reviews/:reviewId(\\d+)', requireAuth,
   asyncHandler(async (req, res) => {
     const reviewId = req.params.reviewId;
     const review = await db.Review.findByPk(reviewId);

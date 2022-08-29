@@ -1,3 +1,5 @@
+@import url('./colors.css');
+
 html {
   position: relative;
   min-height: 100%;
@@ -16,17 +18,25 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* align-items: center;
-    margin-left: 5%;
-    margin-right: 5%; */
   margin: auto;
   width: 79%;
-  padding-bottom: 50px;
+}
+
+#collection-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 79%;
+  padding: 40px 10px 10px 70px;
 }
 
 .card {
   margin: 50px;
   max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card p {
@@ -35,15 +45,34 @@ html {
 
 .game-title {
   height: 40px;
+  margin-bottom: 30px;
 }
-
+#drop-remove-flex {
+  margin-top: 9px;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  width: 90%;
+}
+.delGameBtnDiv {
+  /* border: 1px solid red; */
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.delGameBtn {
+  height: 25px;
+  width: 25px;
+  pointer-events: none;
+}
 body {
   padding: 50px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
+  color: var(--font-color);
+  text-decoration: none;
 }
 
 * {
@@ -65,25 +94,18 @@ span,
 body,
 header {
   font-size: 1rem;
-  /* color: black; */
-  background-color: transparent;
   margin: 0;
   padding: 0;
   outline: 0;
   font-weight: normal;
   font-family: 'ABeeZee', sans-serif;
-  color: #27272a;
+  color: var(--font-color);
 }
 
 body {
-  margin-top: 54px;
+  margin-top: 74px;
   margin-bottom: 50px;
-  /* max-width: 1440px; */
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* text-align: center; */
-  /* padding-left: 200px;
-  padding-right: 200px; */
+  background-color: var(--bg-color);
 }
 
 h1 {
@@ -91,37 +113,29 @@ h1 {
 }
 
 #logo-img {
-  margin-left: 100px;
   height: 50px;
   width: auto;
   align-items: center;
 }
 
 nav {
-  /* border: 1px solid black; */
   position: fixed;
   top: 0;
   width: 100%;
-  height: 54px;
+  height: 74px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #4a39d3;
-  /* color: white; */
+  background-color: var(--primary-color);
 }
 
-#userInteractions span a {
-  color: white;
-  text-decoration: none;
-  margin: 10px;
-}
 #userInteractions {
-  margin-right: 100px;
-  color: white;
+  color: var(--font-color);
 }
 
 footer {
+  z-index: -1;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -130,22 +144,21 @@ footer {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: #f09aff;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
 }
 
 footer span a {
-  color: white;
+  color: var(--font-color);
 }
 
 #banner {
   top: 54px;
   min-width: 100%;
   display: flex;
-  /* background-image: url('../media/banner.png'); */
-  /* background-size: contain; */
   justify-content: center;
 }
+
 #banner img {
   width: 100%;
   height: 100%;
@@ -159,4 +172,105 @@ footer span a {
 #homeTitle {
   padding-top: 30px;
   text-align: center;
+}
+
+#logoutIcon,
+#editName,
+#vaultIcon {
+  pointer-events: none;
+}
+#editName {
+  background-color: gray;
+  color: lightgray;
+}
+
+#logoutIcon,
+#vaultIcon {
+  height: 25px;
+  width: 25px;
+  /* padding-left: 5px; */
+}
+#logoutButton {
+  margin-left: 2px;
+}
+
+#vaultButton:hover,
+#logoutButton:hover {
+  cursor: pointer;
+}
+
+#loggedInInteractions,
+#loggedOutInteractions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#usernameAnchor {
+  margin-left: 5px;
+}
+
+.navButton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  width: 79%;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button,
+input[type='button'] {
+  border-radius: 2em;
+  background-color: white;
+  border-color: white;
+}
+
+button,
+input[type='button']:hover {
+  cursor: pointer;
+}
+
+#separator {
+  border: 1px solid white;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+select {
+  appearance: none;
+  border-radius: 4px;
+  background-image: url('../media/downArrow.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 5px) center;
+  background-size: 10px;
+  padding-right: 17px;
+}
+
+option {
+  margin-left: 10px;
+}
+
+#title-descrip-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+#collInfoBtns {
+  display: flex;
+}
+
+#addGamesSelect {
+  margin-right: 55px;
+}
+#description,
+#edit-desc,
+#edit-name {
+  border-radius: 5px;
 }

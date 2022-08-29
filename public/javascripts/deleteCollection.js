@@ -1,4 +1,11 @@
 const deleteBtn = document.querySelector('.deleteCollBtn');
+let valid;
+if (!deleteBtn) {
+  valid = false;
+  console.log('Unable to find buttons to delete collections');
+} else {
+  valid = true;
+}
 
 const deleteAction = async (e) => {
   e.preventDefault();
@@ -17,4 +24,6 @@ const deleteAction = async (e) => {
   }
 };
 
-deleteBtn.addEventListener('click', deleteAction);
+if (valid) {
+  deleteBtn.addEventListener('click', deleteAction);
+}
