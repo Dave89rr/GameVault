@@ -91,7 +91,7 @@ module.exports = {
           synopsis:
             'The Quarry is an upcoming interactive drama horror video game developed by Supermassive Games and published by 2K Games. It is the spiritual successor to Until Dawn and is set to be released for Windows, PlayStation 4, PlayStation 5, Xbox One and Xbox Series X and Series S',
           img_url:
-            'https://upload.wikimedia.org/wikipedia/en/e/e9/The_Quarry_cover_art.jpg',
+            'https://upload.wikimedia.org/wikipedia/en/a/a1/The_Quarry_cover_art.png',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
