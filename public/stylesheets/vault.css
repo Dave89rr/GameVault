@@ -8,6 +8,8 @@
 
 #editDetails {
   display: none;
+  flex-direction: column;
+  justify-content: center;
   opacity: 100%;
   z-index: 1;
 }
@@ -36,7 +38,7 @@
   border-radius: 9px;
   background-color: var(--highlights-color);
 }
-#editBlocker {
+#editProfileBlocker {
   position: absolute;
   top: 0;
   width: 100%;
@@ -188,9 +190,40 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 220px;
+  align-self: center;
+  justify-self: center;
+  width: 95%;
+  padding: auto;
 }
 
 #editFormitself > input {
   width: 100%;
+}
+#nameInput {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
+
+#editName {
+  width: 70%;
+}
+
+#editIconImg {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+#editIconImg:hover {
+  background-color: rgb(255, 255, 255, 20%);
+}
+#topHalf {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+}
+
+.checkBoxLabel {
+  cursor: pointer;
 }
