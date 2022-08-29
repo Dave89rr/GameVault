@@ -37,9 +37,9 @@ block content
     div(class='editForm' id='editDetails')
       form(id='editFormitself')
         //- Div is missing ID needs to be flex + row
-        div(display='flex' flex-direction='row')
+        div(display='flex' flex-direction='row' )
           img(src=user.icon id='editIconImg')
-          label(for='editName') Name:
+          label(for='editName') Name: 
           input(type='text' id='editName' value=user.username disabled)
         label(for='editBio') Bio:
         textarea(id='editBio' rows='5' cols='5')= user.bio
