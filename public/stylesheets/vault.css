@@ -36,7 +36,7 @@
   border-radius: 9px;
   background-color: var(--highlights-color);
 }
-#editBlocker {
+#editProfileBlocker {
   position: absolute;
   top: 0;
   width: 100%;
