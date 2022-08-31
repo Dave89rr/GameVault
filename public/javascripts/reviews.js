@@ -135,8 +135,10 @@ try {
       document
         .getElementById(`edit-review-${data.review.id}`)
         .addEventListener('click', editReview);
-    } else {
-      alert('Sorry, one review allowed per game');
+    } else if (data.errors) {
+      data.errors.forEach(error => {
+        alert(`${error}`)
+      })
     }
   });
 } catch (e) {

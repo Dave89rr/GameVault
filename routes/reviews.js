@@ -61,6 +61,8 @@ router.get(
 
 const reviewValidator = [
   check('content')
+    .exists({ checkFalsy: true })
+    .withMessage('Cannot submit an empty review')
     .isLength({ max: 2000 })
     .withMessage('Review must be less than 2000 characters')
 ]
@@ -82,6 +84,14 @@ router.post(
     });
 
     const validatorErrors = validationResult(req)
+    const errors = [];
+
+    if (reviewPresent) {
+      errors.push('Sorry, one review allowed per game');
+      res.send({
+        errors
+      })
+    }
 
     if (!reviewPresent && validatorErrors.isEmpty()) {
       const review = await db.Review.create({
@@ -94,7 +104,7 @@ router.post(
       const user = await db.User.findByPk(userId);
       return res.send({ message: 'review ok', review, user });
     } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
+      errors.push(validatorErrors.array().map((error) => error.msg));
       res.send({
         errors,
       })
