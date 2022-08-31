@@ -59,9 +59,19 @@ router.get(
   })
 );
 
+const reviewValidator = [
+  check('content')
+    .exists({ checkFalsy: true })
+    .withMessage('Cannot submit an empty review')
+    .isLength({ max: 2000 })
+    .withMessage('Review must be less than 2000 characters')
+]
+
 router.post(
   '/:id(\\d+)/reviews',
+  // csrfProtection,
   requireAuth,
+  reviewValidator,
   asyncHandler(async (req, res) => {
     const { content, ratings } = req.body;
     const gameId = parseInt(req.params.id, 10);
@@ -73,7 +83,17 @@ router.post(
       },
     });
 
-    if (!reviewPresent) {
+    const validatorErrors = validationResult(req)
+    const errors = [];
+
+    if (reviewPresent) {
+      errors.push('Sorry, one review allowed per game');
+      res.send({
+        errors
+      })
+    }
+
+    if (!reviewPresent && validatorErrors.isEmpty()) {
       const review = await db.Review.create({
         game_id: gameId,
         user_id: userId,
@@ -83,22 +103,44 @@ router.post(
 
       const user = await db.User.findByPk(userId);
       return res.send({ message: 'review ok', review, user });
+    } else {
+      errors.push(validatorErrors.array().map((error) => error.msg));
+      res.send({
+        errors,
+      })
     }
     return res.send({ message: "Whoopsie. Can't do that again." });
   })
 );
 
 router.put(
-  '/:id(\\d+)/reviews/:reviewId(\\d+)', requireAuth,
+  '/:id(\\d+)/reviews/:reviewId(\\d+)',
+  requireAuth,
+  reviewValidator,
   asyncHandler(async (req, res) => {
     const reviewId = req.params.reviewId;
     const review = await db.Review.findByPk(reviewId);
     // const { content } = req.body;
     const user = await db.User.findByPk(review.user_id);
-    review.content = req.body.content;
-    await review.save();
 
-    res.send({ message: 'edit successful', review, user });
+    // const gameId = req.params.id;
+    // const game = await db.Game.findOne({
+    //   include: 'Reviews',
+    //   where: { id: gameId },
+    // });
+
+    const validatorErrors = validationResult(req)
+
+    if (validatorErrors.isEmpty()) {
+      review.content = req.body.content;
+      await review.save();
+      res.send({ message: 'edit successful', review, user });
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.send({
+        errors,
+      })
+    }
   })
 );
 
